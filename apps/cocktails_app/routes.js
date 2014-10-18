@@ -16,6 +16,8 @@ CocktailsApp.routes = SC.Object.create({
      * Navigate to the specified route
      */
     gotoRoute: function(routeParams) {
+        var rootStateChart = CocktailsApp.statechart,
+            action;
 
         // if we have a resource and an identifier load the
         // state for viewing that single resource.
@@ -32,8 +34,8 @@ CocktailsApp.routes = SC.Object.create({
             // get the identifier for the resource we want to route to
             var id = parseInt(routeParams.identifier);
 
-            // TODO: here we will need to fire our action to put our state-chart in the correct state
-            SC.debug('TODO: change state by calling action ' + action + ' with identifier ' + id);
+            // Go to the state for viewing the single resource
+            rootStateChart.sendAction(action, this, id);
         }
         // enter the state for a root (core) route.
         else if(routeParams.route) {
@@ -54,14 +56,13 @@ CocktailsApp.routes = SC.Object.create({
                 return NO;
             }
 
-            // TODO: here we will need to fire our action to put our state-chart in the correct state
-            SC.debug('TODO: change state by calling action ' + action);
+            // Go to state for the respective route
+            rootStateChart.sendAction(action);
         }
         // no expected routeParams so default to all cocktails
         // state.
         else {
-            // TODO: default by going to all cocktails state
-            SC.debug('TODO: change state by calling showAllCocktailsAction');
+            rootStateChart.sendAction('showAllCocktailsAction');
         }
 
         return YES;
