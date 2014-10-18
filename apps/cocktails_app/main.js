@@ -42,19 +42,19 @@ CocktailsApp.main = function main() {
     // CocktailsApp.routes will default to the all cocktails state.
     SC.routes.add(':', CocktailsApp.routes, 'gotoRoute');
 
+    //////////////////////
+    // Setup statechart //
+    //////////////////////
 
-  // Step 1: Instantiate Your Views
-  // The default code here will make the mainPane for your application visible
-  // on screen.  If you app gets any level of complexity, you will probably
-  // create multiple pages and panes.
-  CocktailsApp.getPath('mainPage.mainPane').append() ;
+    // setup a statechart for the application to setup and manage the applications
+    // states. Upon init the statechart will enter its ready_state which will make
+    // the mainPane for the application visible followed by setting the content
+    // property on the primary controller.
+    var statechart = CocktailsApp.statechart;
 
-  // Step 2. Set the content property on your primary controller.
-  // This will make your app come alive!
-  //
-  // ex.
-  // var content = CocktailsApp.store.find(CocktailsApp.Group);
-  // CocktailsApp.groupsController.set('content', content);
+    SC.RootResponder.responder.set('defaultResponder', statechart);
+
+    statechart.initStatechart();
 
 };
 

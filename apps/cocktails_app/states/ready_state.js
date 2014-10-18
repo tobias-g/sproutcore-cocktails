@@ -1,0 +1,46 @@
+// ==========================================================================
+// Project:   CocktailsApp - ReadyState
+// Copyright: @2014 Tobias Gray.
+// ==========================================================================
+/*globals CocktailsApp */
+
+/**
+ * Ready state for the cocktails application entered once the application
+ * loads. On entering the state we make the main pane visible by appending
+ * it and setting up the primary cocktails controllers content.
+ * @type SC.State
+ */
+CocktailsApp.ReadyRootState = SC.State.extend({
+    initialSubstate: 'loadingState',
+
+    loadingState: SC.State.design({
+        enterState: function() {
+            ///////////////////////
+            // Instantiate views //
+            ///////////////////////
+
+            CocktailsApp.getPath('mainPage.mainPane').append();
+
+            ///////////////////////////////
+            // Populate main controllers //
+            ///////////////////////////////
+
+            // TODO: setup our controllers and populate content here
+
+
+            // All loading and application setup is done so go to the readyState
+            this.get('statechart').sendAction('doFinishLoadingAction');
+        },
+
+        doFinishLoadingAction: function() {
+            this.gotoState('readyState');
+        }
+    }),
+
+    readyState: SC.State.design({
+        enterState: function() {
+            // we enter this state when the application
+            // views are appended and controllers populated
+        }
+    })
+});
