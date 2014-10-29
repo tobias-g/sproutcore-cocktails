@@ -15,7 +15,7 @@ CocktailsApp.statechart = SC.Statechart.create({
      * between states.
      * @type {Boolean}
      */
-    trace: YES,
+    trace: NO,
 
     /**
      * all states in the root state are concurrent
