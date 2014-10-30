@@ -20,5 +20,23 @@ $theme.primary-menu-view {
 }
 
 $theme.body-view {
-    background: purple;
+    .all-cocktails-view {
+        background: purple;
+    }
+
+    .personal-cocktails-view {
+        background: red;
+    }
+
+    .inventory-view {
+        background: green;
+    }
+
+    .help-view {
+        background: gray;
+    }
+
+    .single-cocktail-view {
+        background: pink;
+    }
 }
