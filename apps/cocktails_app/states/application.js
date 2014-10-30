@@ -57,31 +57,36 @@ CocktailsApp.ApplicationRootState = SC.State.design({
 
     showingAllCocktailsState: SC.State.design({
         enterState: function() {
-            // TODO: setup for all cocktails state
+            // switch out applications main body content
+            CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'allCocktailListView');
         }
     }),
 
     showingPersonalCocktailsState: SC.State.design({
         enterState: function() {
-            // TODO: setup for personal cocktails state
+            // switch out applications main body content
+            CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'personalCocktailListView');
         }
     }),
 
     showingInventoryState: SC.State.design({
         enterState: function() {
-            // TODO: setup for inventory state
+            // switch out applications main body content
+            CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'inventoryView');
         }
     }),
 
     showingHelpState: SC.State.design({
         enterState: function() {
-            // TODO: setup for help state
+            // switch out applications main body content
+            CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'helpView');
         }
     }),
 
     showingCocktailState: SC.State.design({
         enterState: function() {
-            // TODO: setup for single cocktail state
+            // switch out applications main body content
+            CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'singleCocktailView');
         },
 
         exitState: function() {
