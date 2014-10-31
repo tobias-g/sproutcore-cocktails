@@ -1,7 +1,22 @@
 CocktailsApp.PrimaryNavMenu = SC.View.extend({
     // we want to be able to toggle this later when pressing
     // the header icon view
-    isVisible: YES,
+    isVisible: NO,
+
+    // Transition settings (animation when becoming hidden or visible)
+    transitionShow: SC.View.SLIDE_IN,
+    transitionShowOptions: {
+        direction: 'right',
+        duration: 0.3,
+        timing: 'ease-in'
+    },
+
+    transitionHide: SC.View.SLIDE_OUT,
+    transitionHideOptions: {
+        direction: 'left',
+        duration: 0.3,
+        timing: 'ease-in'
+    },
 
     layout: {right: 56, top: 46, left: 0, maxWidth: 400},
 
