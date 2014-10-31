@@ -14,6 +14,7 @@ CocktailsApp.PrimaryNavMenuState = SC.State.extend({
 
     hiddenMenuState: SC.State.design({
         enterState: function() {
+            CocktailsApp.mainPage.mainPane.leftNavView.set('isVisible', false);
         },
 
         showMenuAction: function(sender, context) {
@@ -23,6 +24,7 @@ CocktailsApp.PrimaryNavMenuState = SC.State.extend({
 
     showingMenuState: SC.State.design({
         enterState: function() {
+            CocktailsApp.mainPage.mainPane.leftNavView.set('isVisible', true);
         },
 
         hideMenuAction: function(sender, context) {

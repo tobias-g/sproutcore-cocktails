@@ -18,13 +18,23 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
      * view (i.e. back to all cocktails or personal cocktails).
      *
      * TODO: change this view to display an icon rather than
-     * simply be a SC.View (div element). Also implement the
-     * desired behavior when we click the icon.
+     * simply be a SC.View (div element).
      */
-    leftIconView: SC.View.design({
+    leftIconView: SC.View.design(SC.ActionSupport, {
         classNames: ['primary-header-icon'],
 
-        layout: {height: 46, width: 46}
+        layout: {height: 46, width: 46},
+
+        mouseDown: function(evt) {
+            return YES;
+        },
+
+        mouseUp: function(evt) {
+            var action = CocktailsApp.statechart.stateIsCurrentState('hiddenMenuState') ? 'showMenuAction' : 'hideMenuAction';
+
+            this.fireAction(action);
+            return YES;
+        }
     }),
 
     titleView: SC.LabelView.design({

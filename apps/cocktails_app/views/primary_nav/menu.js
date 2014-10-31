@@ -20,7 +20,7 @@ CocktailsApp.PrimaryNavMenu = SC.View.extend({
 
         childViews: ['allCocktailsLinkView', 'personalCocktailsLinkView', 'inventoryLinkView', 'helpLinkView'],
 
-        allCocktailsLinkView: SC.LabelView.design({
+        allCocktailsLinkView: SC.LabelView.design(SC.ActionSupport, {
             layout: {height: 48},
             value: 'All Cocktails',
 
@@ -31,11 +31,12 @@ CocktailsApp.PrimaryNavMenu = SC.View.extend({
             mouseUp: function(evt) {
                 // route to single cocktail view
                 SC.routes.set('location', 'all_cocktails');
+                this.fireAction('hideMenuAction');
                 return YES;
             }
         }),
 
-        personalCocktailsLinkView: SC.LabelView.design({
+        personalCocktailsLinkView: SC.LabelView.design(SC.ActionSupport, {
             layout: {height: 48},
             value: 'Personal Cocktails',
 
@@ -46,11 +47,12 @@ CocktailsApp.PrimaryNavMenu = SC.View.extend({
             mouseUp: function(evt) {
                 // route to single cocktail view
                 SC.routes.set('location', 'personal_cocktails');
+                this.fireAction('hideMenuAction');
                 return YES;
             }
         }),
 
-        inventoryLinkView: SC.LabelView.design({
+        inventoryLinkView: SC.LabelView.design(SC.ActionSupport, {
             layout: {height: 48},
             value: 'Inventory',
 
@@ -61,11 +63,12 @@ CocktailsApp.PrimaryNavMenu = SC.View.extend({
             mouseUp: function(evt) {
                 // route to single cocktail view
                 SC.routes.set('location', 'inventory');
+                this.fireAction('hideMenuAction');
                 return YES;
             }
         }),
 
-        helpLinkView: SC.LabelView.design({
+        helpLinkView: SC.LabelView.design(SC.ActionSupport, {
             layout: {height: 48},
             value: 'Help',
 
@@ -76,6 +79,7 @@ CocktailsApp.PrimaryNavMenu = SC.View.extend({
             mouseUp: function(evt) {
                 // route to single cocktail view
                 SC.routes.set('location', 'help');
+                this.fireAction('hideMenuAction');
                 return YES;
             }
         })
