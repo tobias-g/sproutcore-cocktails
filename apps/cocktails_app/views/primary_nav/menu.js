@@ -22,22 +22,62 @@ CocktailsApp.PrimaryNavMenu = SC.View.extend({
 
         allCocktailsLinkView: SC.LabelView.design({
             layout: {height: 48},
-            value: 'All Cocktails'
+            value: 'All Cocktails',
+
+            mouseDown: function(evt) {
+                return YES;
+            },
+
+            mouseUp: function(evt) {
+                // route to single cocktail view
+                SC.routes.set('location', 'all_cocktails');
+                return YES;
+            }
         }),
 
         personalCocktailsLinkView: SC.LabelView.design({
             layout: {height: 48},
-            value: 'Personal Cocktails'
+            value: 'Personal Cocktails',
+
+            mouseDown: function(evt) {
+                return YES;
+            },
+
+            mouseUp: function(evt) {
+                // route to single cocktail view
+                SC.routes.set('location', 'personal_cocktails');
+                return YES;
+            }
         }),
 
         inventoryLinkView: SC.LabelView.design({
             layout: {height: 48},
-            value: 'Inventory'
+            value: 'Inventory',
+
+            mouseDown: function(evt) {
+                return YES;
+            },
+
+            mouseUp: function(evt) {
+                // route to single cocktail view
+                SC.routes.set('location', 'inventory');
+                return YES;
+            }
         }),
 
         helpLinkView: SC.LabelView.design({
             layout: {height: 48},
-            value: 'Help'
+            value: 'Help',
+
+            mouseDown: function(evt) {
+                return YES;
+            },
+
+            mouseUp: function(evt) {
+                // route to single cocktail view
+                SC.routes.set('location', 'help');
+                return YES;
+            }
         })
     })
 });
