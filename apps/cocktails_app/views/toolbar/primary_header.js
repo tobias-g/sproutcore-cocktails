@@ -2,7 +2,7 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
 
     classNames: ['primary-header-view'],
 
-    layout: {height: 46},
+    layout: {height: 52},
 
     //////////////////
     // Child Views //
@@ -20,10 +20,13 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
      * TODO: change this view to display an icon rather than
      * simply be a SC.View (div element).
      */
-    leftIconView: SC.View.design(SC.ActionSupport, {
+    leftIconView: SC.ImageView.design(SC.ActionSupport, {
         classNames: ['primary-header-icon'],
 
-        layout: {height: 46, width: 46},
+        layout: {height: 52, width: 52},
+
+        scale: SC.SCALE_NONE,
+        value: sc_static('/images/hamburger.png'),
 
         mouseDown: function(evt) {
             return YES;
@@ -38,7 +41,7 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
     }),
 
     titleView: SC.LabelView.design({
-        layout: {left: 46, right: 46},
+        layout: {left: 52},
 
         classNames: ['primary-header-title'],
 

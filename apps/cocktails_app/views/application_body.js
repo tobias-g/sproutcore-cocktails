@@ -1,5 +1,5 @@
 CocktailsApp.ApplicationBody = SC.ContainerView.extend({
-    layout: {top: 46},
+    layout: {top: 52},
 
     classNames: ['body-view'],
 

@@ -1,42 +1,58 @@
+$theme.sc-regular-size {
+    font-family: 'Roboto-Regular';
+    font-size: 14px;
+    color: $text-dark;
+}
+
 $theme.primary-header-view {
-    background: blue;
+    background: $primary-brand;
 
     .primary-header-icon {
-        background: orange;
+        background: $primary-dark;
+        cursor: pointer;
     }
 
     .primary-header-title {
-        background: cyan;
-        text-align: center;
+        text-align: left;
+        line-height: 52px;
+        border-bottom: $secondary-brand solid 4px;
+        padding: 0px 52px 0px 16px;
+        font-size: 16px;
+        color: $text-light;
     }
 }
 
 $theme.primary-menu-view {
-    background: white;
+    background: $secondary-dark;
 
     .sc-label-view {
-        background: yellow;
+        line-height: 48px;
+        padding: 0px 16px;
+        color: $text-light;
+        cursor: pointer;
     }
 }
 
 $theme.body-view {
+    background: $body-brand;
+
     .all-cocktails-view {
-        background: purple;
+        padding: 10px;
     }
 
     .personal-cocktails-view {
-        background: red;
+        padding: 10px;
     }
 
     .inventory-view {
-        background: green;
+        padding: 10px;
     }
 
     .help-view {
-        background: gray;
+        padding: 10px;
     }
 
     .single-cocktail-view {
-        background: pink;
+        padding: 10px;
     }
 }

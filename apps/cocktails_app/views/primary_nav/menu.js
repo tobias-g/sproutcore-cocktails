@@ -18,7 +18,7 @@ CocktailsApp.PrimaryNavMenu = SC.View.extend({
         timing: 'ease-in'
     },
 
-    layout: {right: 56, top: 46, left: 0, maxWidth: 400},
+    layout: {right: 52, top: 52, left: 0, maxWidth: 400},
 
     classNames: ['primary-menu-view'],
 
