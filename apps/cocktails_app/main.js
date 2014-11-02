@@ -58,5 +58,16 @@ CocktailsApp.main = function main() {
 
 };
 
+/**
+ * A function to create instances of all our controllers
+ * the application needs before we run the application.
+ */
+CocktailsApp.setupControllers = function setupControllers() {
+    CocktailsApp.primaryHeaderController = CocktailsApp.PrimaryHeaderController.create();
+}
 
-function main() { CocktailsApp.main(); }
+
+function main() {
+    CocktailsApp.setupControllers();
+    CocktailsApp.main();
+}

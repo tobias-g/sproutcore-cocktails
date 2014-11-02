@@ -57,6 +57,9 @@ CocktailsApp.ApplicationRootState = SC.State.design({
 
     showingAllCocktailsState: SC.State.design({
         enterState: function() {
+            // set our main application header
+            CocktailsApp.primaryHeaderController.set('displayText', 'All Cocktails');
+
             // switch out applications main body content
             CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'allCocktailListView');
         }
@@ -64,6 +67,9 @@ CocktailsApp.ApplicationRootState = SC.State.design({
 
     showingPersonalCocktailsState: SC.State.design({
         enterState: function() {
+            // set our main application header
+            CocktailsApp.primaryHeaderController.set('displayText', 'Personal Cocktails');
+
             // switch out applications main body content
             CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'personalCocktailListView');
         }
@@ -71,6 +77,9 @@ CocktailsApp.ApplicationRootState = SC.State.design({
 
     showingInventoryState: SC.State.design({
         enterState: function() {
+            // set our main application header
+            CocktailsApp.primaryHeaderController.set('displayText', 'Inventory');
+
             // switch out applications main body content
             CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'inventoryView');
         }
@@ -78,6 +87,9 @@ CocktailsApp.ApplicationRootState = SC.State.design({
 
     showingHelpState: SC.State.design({
         enterState: function() {
+            // set our main application header
+            CocktailsApp.primaryHeaderController.set('displayText', 'Help');
+
             // switch out applications main body content
             CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'helpView');
         }
@@ -85,13 +97,16 @@ CocktailsApp.ApplicationRootState = SC.State.design({
 
     showingCocktailState: SC.State.design({
         enterState: function() {
+            // set our main application header
+            CocktailsApp.primaryHeaderController.set('displayText', 'Single Cocktail');
+
             // switch out applications main body content
             CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'singleCocktailView');
         },
 
         exitState: function() {
             // forget previous state
-            this.parentState.prevState = null;
+            this.parentState._prevState = null;
         },
 
         goBackAction: function(sender, context) {
