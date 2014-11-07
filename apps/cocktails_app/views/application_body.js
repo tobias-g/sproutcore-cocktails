@@ -1,3 +1,5 @@
+sc_require('views/common/cocktails_list');
+
 CocktailsApp.ApplicationBody = SC.ContainerView.extend({
     layout: {top: 52},
 
@@ -16,9 +18,16 @@ CocktailsApp.ApplicationBody = SC.ContainerView.extend({
      * cocktails. TODO: implement a list of all cocktails.
      * @type {SC.LabelView}
      */
-    allCocktailListView: SC.LabelView.design({
+    allCocktailListView: SC.ScrollView.extend({
+
         classNames: ['all-cocktails-view'],
-        value: 'All Cocktails'
+
+        layout: { bottom: 0, left: 0, right: 0, top: 0},
+
+        contentView: CocktailsApp.CommonCocktailsListView.design({
+            // bind the list views content to the content of our all cocktails controller
+            contentBinding: SC.Binding.oneWay('CocktailsApp.allCocktailsController')
+        })
     }),
 
     /**

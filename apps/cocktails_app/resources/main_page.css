@@ -37,7 +37,56 @@ $theme.body-view {
     background: $body-brand;
 
     .all-cocktails-view {
-        padding: 10px;
+        .collection {
+            background: none;
+        }
+
+        .cocktail-item {
+            .cocktails-item-icon {
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                left: 18px;
+                top: 18px;
+                background: $primary-dark;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    width: 40px;
+                    height: 40px;
+                    left: -2px;
+                    top: -2px;
+                    background: $secondary-dark;
+                    -webkit-border-radius: 20px;
+                    -moz-border-radius: 20px;
+                    border-radius: 20px;
+                }
+            }
+
+            .cocktails-item-name {
+                position: absolute;
+                left: 72px;
+                height: 14px;
+                top: 50%;
+                right: 16px;
+                margin-top: -16px;
+                overflow: hidden;
+            }
+
+            .cocktails-item-description {
+                position: absolute;
+                left: 72px;
+                height: 14px;
+                top: 50%;
+                right: 16px;
+                margin-top: 2px;
+                overflow: hidden;
+            }
+        }
     }
 
     .personal-cocktails-view {
