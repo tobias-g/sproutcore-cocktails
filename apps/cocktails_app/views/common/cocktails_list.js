@@ -35,6 +35,24 @@ CocktailsApp.CommonCocktailsListView = SC.ListView.extend({
         classNames: ['cocktail-item'],
         layout: {height: 72},
 
+        ////////////
+        // Events //
+        ////////////
+
+        mouseDown: function(evt) {
+            return YES;
+        },
+
+        mouseUp: function(evt) {
+            // route to single cocktail view
+            SC.routes.set('location', 'cocktail/' + this.getPath('content.id'));
+
+            // set the current cocktail controllers content to the content of the item being clicked
+            CocktailsApp.currentCocktailController.set('content', this.get('content'));
+
+            return YES;
+        },
+
         ///////////////////////
         // Render and update //
         ///////////////////////
