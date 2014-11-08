@@ -32,6 +32,18 @@ CocktailsApp.Cocktail = SC.Record.extend({
      */
     description: SC.Record.attr(String, {
         key: 'description'
+    }),
+
+    /**
+     * Memberships are the link between ingredients and cocktails
+     * that also describe the ingredient amount required and
+     * what substitutes could be used for an ingredient.
+     * @type {[type]}
+     */
+    memberships: SC.Record.toMany('CocktailsApp.Membership', {
+        key: 'memberships',
+        isMaster: YES,
+        inverse: 'cocktail'
     })
 
 });

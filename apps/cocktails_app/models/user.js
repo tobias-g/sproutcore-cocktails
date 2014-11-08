@@ -29,6 +29,15 @@ CocktailsApp.User = SC.Record.extend({
      */
     password: SC.Record.attr(String, {
         key: 'password'
+    }),
+
+    /**
+     * Array of the ingredients (or inventory) associated with the user
+     * @type {CocktailsApp.Ingredient}
+     */
+    ingredients: SC.Record.toMany('CocktailsApp.Ingredient', {
+        key: 'ingredients',
+        isMaster: YES,
     })
 
 });

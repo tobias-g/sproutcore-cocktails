@@ -17,6 +17,23 @@ CocktailsApp.Membership = SC.Record.extend({
     primaryKey: 'id',
 
     /**
+     * Single cocktail this membership refers to.
+     * @type {CocktailsApp.Cocktail}
+     */
+    cocktail: SC.Record.toOne('CocktailsApp.Cocktail', {
+        key: 'cocktail',
+        isMaster: NO
+    }),
+
+    /**
+     * The ingredient this membership refers to.
+     * @type {CocktailsApp.Ingredient}
+     */
+    ingredient: SC.Record.toOne('CocktailsApp.Ingredient', {
+        key: 'ingredient'
+    }),
+
+    /**
      * The amount of a certain ingredient that
      * is required.
      * @type {String}
