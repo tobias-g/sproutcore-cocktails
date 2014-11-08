@@ -98,7 +98,8 @@ CocktailsApp.ApplicationRootState = SC.State.design({
     showingCocktailState: SC.State.design({
         enterState: function() {
             // set our main application header
-            CocktailsApp.primaryHeaderController.set('displayText', 'Single Cocktail');
+            var cocktailName = CocktailsApp.currentCocktailController.get('name');
+            CocktailsApp.primaryHeaderController.set('displayText', cocktailName ? cocktailName : 'Single Cocktail');
 
             // switch out applications main body content
             CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'singleCocktailView');

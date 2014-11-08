@@ -1,4 +1,5 @@
 sc_require('views/common/cocktails_list');
+sc_require('views/cocktails/single_cocktail');
 
 CocktailsApp.ApplicationBody = SC.ContainerView.extend({
     layout: {top: 52},
@@ -70,8 +71,5 @@ CocktailsApp.ApplicationBody = SC.ContainerView.extend({
      * cocktails list.
      * @type {SC.LabelView}
      */
-    singleCocktailView: SC.LabelView.design({
-        classNames: ['single-cocktail-view'],
-        value: 'Single Cocktail'
-    })
+    singleCocktailView: CocktailsApp.CocktailsSingleCocktailView
 })

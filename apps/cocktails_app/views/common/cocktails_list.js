@@ -44,11 +44,11 @@ CocktailsApp.CommonCocktailsListView = SC.ListView.extend({
         },
 
         mouseUp: function(evt) {
-            // route to single cocktail view
-            SC.routes.set('location', 'cocktail/' + this.getPath('content.id'));
-
             // set the current cocktail controllers content to the content of the item being clicked
             CocktailsApp.currentCocktailController.set('content', this.get('content'));
+
+            // route to single cocktail view
+            SC.routes.set('location', 'cocktail/' + this.getPath('content.id'));
 
             return YES;
         },
