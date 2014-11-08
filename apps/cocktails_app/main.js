@@ -65,6 +65,7 @@ CocktailsApp.main = function main() {
 CocktailsApp.setupControllers = function setupControllers() {
     CocktailsApp.primaryHeaderController = CocktailsApp.PrimaryHeaderController.create();
     CocktailsApp.allCocktailsController = CocktailsApp.AllCocktailsController.create();
+    CocktailsApp.currentCocktailController = CocktailsApp.CurrentCocktailController.create();
 }
 
 
