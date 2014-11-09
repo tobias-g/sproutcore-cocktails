@@ -25,8 +25,11 @@ CocktailsApp.ReadyRootState = SC.State.extend({
             // Populate main controllers //
             ///////////////////////////////
 
-            // TODO: setup our controllers and populate content here
+            // Query the store
+            var cocktails = CocktailsApp.store.find(CocktailsApp.Cocktail);
 
+            // Set the content property on the primary controllers.
+            CocktailsApp.allCocktailsController.set('content', cocktails);
 
             // All loading and application setup is done so go to the readyState
             this.get('statechart').sendAction('doFinishLoadingAction');

@@ -48,6 +48,10 @@ CocktailsApp.ApplicationRootState = SC.State.design({
         // remember how we got to this state so we can go back
         this._prevState = this.currentSubstates[0].name;
 
+        // set the current cocktail controllers content to the cocktail
+        // with the id passed as the context.
+        CocktailsApp.currentCocktailController.set('content', CocktailsApp.store.find(CocktailsApp.Cocktail, context));
+
         this.gotoState('showingCocktailState');
     },
 
