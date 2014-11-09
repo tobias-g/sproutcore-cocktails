@@ -1,27 +1,27 @@
 // ==========================================================================
 // Project:   CocktailsApp
-// Copyright: @2014 My Company, Inc.
+// Copyright: @2014 Tobias Gray.
 // ==========================================================================
 /*globals CocktailsApp */
 
-/** @namespace
-
-  My cool new app.  Describe your application.
-
-  @extends SC.Object
-*/
+/**
+ * The Cocktails App
+ *
+ * The cocktails applications purpose is to allow a user
+ * to browse cocktails along with give an inventory to
+ * browse a list of personalized cocktails that can be
+ * created with the given inventory.
+ */
 CocktailsApp = SC.Application.create(
-  /** @scope CocktailsApp.prototype */ {
+    /** @scope CocktailsApp.prototype */ {
 
-  NAMESPACE: 'CocktailsApp',
-  VERSION: '0.1.0',
+    NAMESPACE: 'CocktailsApp',
+    VERSION: '0.1.0',
 
-  // This is your application store.  You will use this store to access all
-  // of your model data.  You can also set a data source on this store to
-  // connect to a backend server.  The default setup below connects the store
-  // to any fixtures you define.
-  store: SC.Store.create().from(SC.Record.fixtures)
-
-  // TODO: Add global constants or singleton objects needed by your app here.
-
+    store: SC.Store.create({
+        dataSource: SC.CascadeDataSource.create({
+            dataSources: ['fixture_store'],
+            fixture_store: SC.FixturesDataSource.create()
+        })
+    })
 });
