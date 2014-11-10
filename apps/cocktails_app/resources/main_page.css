@@ -102,6 +102,22 @@ $theme.body-view {
     }
 
     .single-cocktail-view {
-        padding: 10px;
+        .cocktail-ingredient-list {
+            .ingredient-list-name,
+            .ingredient-list-amount {
+                line-height: 32px;
+                margin: 0px 16px;
+            }
+
+            .cocktail-ingredient-item:nth-child(even) {
+                background: $light-grey;
+            }
+
+            border-bottom: $grey solid 1px;
+        }
+
+        .cocktail-description {
+            padding: 16px;
+        }
     }
 }

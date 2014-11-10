@@ -20,31 +20,62 @@ CocktailsApp.CocktailsSingleCocktailView = SC.ScrollView.extend({
      * @type {SC.View}
      */
     contentView: SC.View.design({
-        classNames: ['cocktail-view'],
+        classNames: ['single-cocktail-view'],
 
         childViews: ['ingredientsView', 'descriptionView'],
+
+        childViewLayout: SC.View.VERTICAL_STACK,
 
         /**
          * TODO: here we will display our cocktails ingredients and
          * required amounts.
          * @type {SC.LabelView}
          */
-        ingredientsView: SC.LabelView.design({
-            layout: { height: 40 },
+        ingredientsView: SC.ListView.design({
+            contentBinding: 'CocktailsApp.currentCocktailController.memberships',
+
             classNames: ['cocktail-ingredient-list'],
 
-            value: 'TODO: our cocktails ingredients will go here!'
+            layout: {height: 0},
+
+            showAlternatingRows: true,
+
+            rowHeight: 32,
+
+            exampleView: SC.View.extend({
+                layout: {height: 32},
+
+                classNames: ['cocktail-ingredient-item'],
+
+                childViews: ['ingredientNameView', 'ingredientAmountView'],
+
+                ingredientNameView: SC.LabelView.design({
+                    classNames: ['ingredient-list-name'],
+                    layout: {right: 120},
+                    valueBinding: '.parentView.content.ingredient.name'
+                }),
+
+                ingredientAmountView: SC.LabelView.design({
+                    classNames: ['ingredient-list-amount'],
+                    layout: {width: 100, right: 0},
+                    valueBinding: '.parentView.content.amount'
+                })
+            })
         }),
 
         /**
          * Here we display the full description of the cocktail.
          * @type {SC.LabelView}
          */
-        descriptionView: SC.LabelView.design({
+        descriptionView: SC.LabelView.design(SC.AutoResize, {
             classNames: ['cocktail-description'],
-            layout: { height: 100, top: 40 },
 
-            valueBinding: 'CocktailsApp.currentCocktailController.description'
+            shouldAutoFitText: NO,
+            shouldAutoResize: YES,
+            shouldResizeHeight: YES,
+            shouldResizeWidth: NO,
+
+            valueBinding: SC.Binding.oneWay('CocktailsApp.currentCocktailController.description'),
         })
     })
 })
