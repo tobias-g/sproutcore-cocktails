@@ -173,7 +173,7 @@ CocktailsApp.Cocktail.FIXTURES = [
         "name": "Mai-Tai",
         "description": "Shake with ice and strain into large old-fashioned glass about 1/3 full with crushed ice. " +
         "Decorate with a maraschino cherry speared to a wedge of fresh pineapple. For a hair raiser, top with a " +
-        "dash of 151-proof rum; for a true Polynesian effect, float an orchid on each frink. Serve with straws.",
+        "dash of 151-proof rum; for a true Polynesian effect, float an orchid on each drink. Serve with straws.",
         "memberships": [
             53,
             54,
