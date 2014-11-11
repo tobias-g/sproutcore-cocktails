@@ -64,6 +64,23 @@ CocktailsCore.LocalStorage = SC.DataSource.extend(
         return YES ; // return YES if you handled the storeKey
     },
 
+    retrieveRecord: function(store, storeKey, guid) {
+        // get the record type which we need to check if the datasource should handle this call.
+        var recordType = store.recordTypeFor(storeKey);
+
+        // this datasource onlys deal with User records. Returning NO (false) tells the cascaded
+        // datasource to try the next datasource.
+        if(recordType !== CocktailsApp.User) { return NO; }
+
+        // get our data for all records of this type
+        var data = this._dataForRecordType(recordType);
+
+        // load the record with the given guid into the store
+        store.dataSourceDidComplete(storeKey, data[guid]);
+
+        return YES; // return YES if you handled the storeKey
+    },
+
     ////////////////////////////////
     // Internal utility functions //
     ////////////////////////////////
