@@ -105,6 +105,30 @@ CocktailsCore.LocalStorage = SC.DataSource.extend(
         return YES ; // return YES if you handled the storeKey
     },
 
+    destroyRecord: function(store, storeKey) {
+        // get the record type which we need to check if the datasource should handle this call.
+        var recordType = store.recordTypeFor(storeKey);
+
+        // this datasource onlys deal with User records. Returning NO (false) tells the cascaded
+        // datasource to try the next datasource.
+        if(recordType !== CocktailsApp.User) { return NO; }
+
+        // get the records data and guid
+        var data = this._dataForRecordType(recordType),
+            guid = store.idFor(storeKey);
+
+        // delete the record from our data hash
+        delete data[guid];
+
+        // now our cache is updated with the updated record save these changes to local storage
+        this._writeDataToLocalStorage(recordType);
+
+        // tell the store that the record was destroyed (deleted)
+        store.dataSourceDidDestroy(storeKey);
+
+        return YES ; // return YES if you handled the storeKey
+    },
+
     ////////////////////////////////
     // Internal utility functions //
     ////////////////////////////////
