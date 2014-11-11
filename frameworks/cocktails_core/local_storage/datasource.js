@@ -32,6 +32,34 @@ CocktailsCore.LocalStorage = SC.DataSource.extend(
      */
     dataByRecordType: {},
 
+    fetch: function(store, query) {
+        // get the record type which we need to check if the datasource should handle this call.
+        var recordType = query.get('recordType');
+
+        // this datasource onlys deal with User records. Returning NO (false) tells the cascaded
+        // datasource to try the next datasource.
+        if(recordType !== CocktailsApp.User) { return NO; }
+
+        // get our data for all records of this type
+        var data = this._dataForRecordType(recordType);
+
+        // create an array of records. we add the records we want to return within this array.
+        var records = [];
+
+        // loop though each object in the data hash (except the __guid) and add it to our records
+        // to return
+        for (key in data) {
+            if (data.hasOwnProperty(key) && key !== '__guid') {
+                records.push(data[key]);
+            }
+        }
+
+        // load the records into the store
+        store.loadRecords(recordType, records);
+
+        return YES; // return YES if you handled the query
+    },
+
     createRecord: function(store, storeKey) {
         // get the record type which we need to check if the datasource should handle this call.
         var recordType = store.recordTypeFor(storeKey);
