@@ -81,6 +81,30 @@ CocktailsCore.LocalStorage = SC.DataSource.extend(
         return YES; // return YES if you handled the storeKey
     },
 
+    updateRecord: function(store, storeKey) {
+        // get the record type which we need to check if the datasource should handle this call.
+        var recordType = store.recordTypeFor(storeKey);
+
+        // this datasource onlys deal with User records. Returning NO (false) tells the cascaded
+        // datasource to try the next datasource.
+        if(recordType !== CocktailsApp.User) { return NO; }
+
+        // get the records data and guid
+        var data = store.readDataHash(storeKey),
+            guid = store.idFor(storeKey);
+
+        // update our local cache `dataByRecordType` property
+        this._writeRecord(data, recordType, guid);
+
+        // now our cache is updated with the updated record save these changes to local storage
+        this._writeDataToLocalStorage(recordType);
+
+        // tell the store the record update was for-filled
+        store.dataSourceDidComplete(storeKey, null, guid);
+
+        return YES ; // return YES if you handled the storeKey
+    },
+
     ////////////////////////////////
     // Internal utility functions //
     ////////////////////////////////
