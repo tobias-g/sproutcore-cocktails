@@ -20,7 +20,11 @@ CocktailsApp = SC.Application.create(
 
     store: SC.Store.create({
         dataSource: SC.CascadeDataSource.create({
-            dataSources: ['fixture_store'],
+            dataSources: [
+                'local_store',// used to store user data
+                'fixture_store'// used to store all other date
+            ],
+            local_store: CocktailsCore.LocalStorage.create(),
             fixture_store: SC.FixturesDataSource.create()
         })
     })
