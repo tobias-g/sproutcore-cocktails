@@ -1,5 +1,6 @@
 sc_require('views/common/cocktails_list');
 sc_require('views/cocktails/single_cocktail');
+sc_require('views/inventory/inventory_list');
 
 CocktailsApp.ApplicationBody = SC.ContainerView.extend({
     layout: {top: 52},
@@ -48,9 +49,16 @@ CocktailsApp.ApplicationBody = SC.ContainerView.extend({
      * ingredient.
      * @type {SC.LabelView}
      */
-    inventoryView: SC.LabelView.design({
+    inventoryView: SC.ScrollView.extend({
+
         classNames: ['inventory-view'],
-        value: 'Inventory'
+
+        layout: { bottom: 0, left: 0, right: 0, top: 0},
+
+        contentView: CocktailsApp.InventoryUserInventoryListView.design({
+            // bind the list views content to the content of our ingredients controller
+            contentBinding: SC.Binding.oneWay('CocktailsApp.inventoryController')
+        })
     }),
 
     /**

@@ -34,6 +34,15 @@ CocktailsApp.Ingredient = SC.Record.extend({
          * @type {String}
          */
         defaultValue: 'Awaiting Description'
-    })
+    }),
+
+    /**
+     * Transient property used to track if a user has the ingredient
+     * record in their inventory. This relationship is persisted via
+     * the CocktailsApp.User ingredients property and once these are
+     * loaded each ingredients model hasIngredient is updated.
+     * @type {Boolean}
+     */
+    hasIngredient: NO
 
 });

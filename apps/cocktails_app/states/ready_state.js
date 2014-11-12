@@ -26,10 +26,12 @@ CocktailsApp.ReadyRootState = SC.State.extend({
             ///////////////////////////////
 
             // Query the store
-            var cocktails = CocktailsApp.store.find(CocktailsApp.Cocktail);
+            var cocktails = CocktailsApp.store.find(CocktailsApp.Cocktail),
+                ingredients = CocktailsApp.store.find(CocktailsApp.Ingredient);
 
             // Set the content property on the primary controllers.
             CocktailsApp.allCocktailsController.set('content', cocktails);
+            CocktailsApp.ingredientsController.set('content', ingredients);
 
             ////////////////
             // User setup //
