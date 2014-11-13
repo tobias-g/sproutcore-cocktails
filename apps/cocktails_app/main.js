@@ -10,6 +10,63 @@
  */
 CocktailsApp.main = function main() {
 
+    ////////////////////////////////
+    // Setup Custom Query Handler //
+    ////////////////////////////////
+
+    SC.Query.registerQueryExtension('SATISFIED_BY', {
+        reservedWord:     true,
+        leftType:         'PRIMITIVE',
+        rightType:        'PRIMITIVE',
+        evalType:         'BOOLEAN',
+
+        /** @ignore */
+        evaluate: function (r,w) {
+            var memberships  = this.leftSide.evaluate(r,w),
+                inventory = this.rightSide.evaluate(r,w),
+                indexHash = {};
+
+            /**
+             * Go though each membership checking if we have the required
+             * ingredient.
+             */
+            memberships.forEach(function(membership) {
+
+                // check if we already have an ingredient
+                // for this list index. if so we don't
+                // need to keep looking.
+                if(indexHash[membership.get('listIndex')] === true) {
+                    return;
+                }
+
+                // we've never seen this list index yet so increment our
+                // false count until we know we have the ingredient for
+                // the list index.
+                indexHash[membership.get('listIndex')] = false;
+
+                // if the inventory does have an ingredient for the list
+                // index decrement our false counter again and update our
+                // hash to say we already have an ingredient for this list
+                // index.
+                if(inventory.contains(membership.get('ingredient'))) {
+                    indexHash[membership.get('listIndex')] = true;
+                }
+            });
+
+            // we check for each property in our indexHash is
+            // true. this signifies we found an ingredient in
+            // the inventory for each index.
+            for (var property in indexHash) {
+                if (indexHash.hasOwnProperty(property)) {
+                    if(indexHash[property] === false) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+    });
+
     /////////////////////////
     // Register our routes //
     /////////////////////////
@@ -69,6 +126,7 @@ CocktailsApp.setupControllers = function setupControllers() {
     CocktailsApp.currentUserController = CocktailsApp.CurrentUserController.create();
     CocktailsApp.ingredientsController = CocktailsApp.IngredientsController.create();
     CocktailsApp.inventoryController = CocktailsApp.InventoryController.create();
+    CocktailsApp.personalCocktailsController = CocktailsApp.PersonalCocktailsController.create();
 }
 
 

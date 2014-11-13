@@ -76,6 +76,10 @@ CocktailsApp.ApplicationRootState = SC.State.design({
 
             // switch out applications main body content
             CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'personalCocktailListView');
+
+            if(CocktailsApp.personalCocktailsController.get('needsUpdate')) {
+                CocktailsApp.personalCocktailsController.refreshContent();
+            }
         }
     }),
 

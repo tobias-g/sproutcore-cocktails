@@ -147,6 +147,10 @@ CocktailsApp.InventoryController = SC.ArrayController.extend({
             }
 
             user.commitRecord();
+
+            // tell the personal cocktail controller it needs to update
+            // its content next time we enter the personal cocktails state
+            CocktailsApp.personalCocktailsController.set('needsUpdate', true);
         }
     }
 });

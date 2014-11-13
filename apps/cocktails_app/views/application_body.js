@@ -38,9 +38,16 @@ CocktailsApp.ApplicationBody = SC.ContainerView.extend({
      * of personal cocktails.
      * @type {SC.LabelView}
      */
-    personalCocktailListView: SC.LabelView.design({
+    personalCocktailListView: SC.ScrollView.extend({
+
         classNames: ['personal-cocktails-view'],
-        value: 'Personal Cocktails'
+
+        layout: { bottom: 0, left: 0, right: 0, top: 0},
+
+        contentView: CocktailsApp.CommonCocktailsListView.design({
+            // bind the list views content to the content of our all cocktails controller
+            contentBinding: SC.Binding.oneWay('CocktailsApp.personalCocktailsController')
+        })
     }),
 
     /**

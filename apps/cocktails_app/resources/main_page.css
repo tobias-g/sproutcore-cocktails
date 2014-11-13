@@ -36,6 +36,7 @@ $theme.primary-menu-view {
 $theme.body-view {
     background: $body-brand;
 
+    .personal-cocktails-view,
     .all-cocktails-view {
         .collection {
             background: none;
@@ -89,10 +90,6 @@ $theme.body-view {
                 overflow: hidden;
             }
         }
-    }
-
-    .personal-cocktails-view {
-        padding: 10px;
     }
 
     .inventory-view {
