@@ -7,7 +7,7 @@
 // require the views we need within the main pane
 sc_require('views/toolbar/primary_header');
 sc_require('views/primary_nav/menu');
-sc_require('views/applicaiton_body');
+sc_require('views/application_body');
 
 // This page describes the main user interface for the application.
 CocktailsApp.mainPage = SC.Page.design({
