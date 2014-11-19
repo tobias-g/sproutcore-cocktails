@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+
+system('ruby sc-phonegap.rb -a cocktails_app -o ../phonegap/cocktails/www');
