@@ -27,17 +27,23 @@ CocktailsApp.CommonCocktailsListView = SC.ListView.extend({
     classNames: ['cocktails-list'],
 
     /**
-     * View for each item in the list. Note we have to mixin SC.ContentDisplay
+     * View for each item in the list.
+     *
+     * Note: we have to mixin `SC.ContentDisplay`
      * so our views update properly when the content changes.
+     *
+     * Note: we also have to mixin `SC.Gesturable` for out touch
+     * events to work.
+     *
      * @type {SC.View}
      */
-    exampleView: SC.View.extend(SC.ContentDisplay, {
+    exampleView: SC.View.extend(SC.ContentDisplay, SC.Gesturable, {
         classNames: ['cocktail-item'],
         layout: {height: 72},
 
-        ////////////
-        // Events //
-        ////////////
+        ////////////////////
+        // Desktop Events //
+        ////////////////////
 
         mouseDown: function(evt) {
             return YES;
@@ -48,6 +54,54 @@ CocktailsApp.CommonCocktailsListView = SC.ListView.extend({
             SC.routes.set('location', 'cocktail/' + this.getPath('content.id'));
 
             return YES;
+        },
+
+        //////////////////
+        // Touch Events //
+        //////////////////
+
+        /**
+         * An array of gestures we want to setup and customize
+         * @type {Array}
+         */
+        gestures: ['cocktailsListTapGesture'],
+
+        /**
+         * since we specify the tap gesture in `gestures`
+         * we can specify finer details of what defines
+         * a tap.
+         * @type {SC.TapGesture}
+         */
+        cocktailsListTapGesture: SC.TapGesture.extend({
+            acceptsMultitouch: NO,
+            tapDelay: 200,
+            tapWiggle: 20
+        }),
+
+        /**
+         * Here we would put any code we wanted to run if Sproutcore
+         * though a tap was starting.
+         * @param  {Touch} touch The touch event
+         */
+        tapStart: function(touch) {},
+
+        /**
+         * Here we would put any code to run when Sproutcore confirmed
+         * a tap happened and completed.
+         * @param  {Touch} touch The touch event
+         */
+        tapEnd: function(touch) {},
+
+        /**
+         * A shortcut to running code when a tap occurs instead of using
+         * `tapStart` and `tapEnd` we use this method which is called when
+         * `tapStart` and `tapEnd` are both called (i.e. a tap occurred). In
+         * this case all we do is call `mouseUp` so the same happens as if the
+         * tap were a click.
+         * @param  {Touch} touch The touch event
+         */
+        tap: function(touch) {
+            this.mouseUp(touch);
         },
 
         ///////////////////////
