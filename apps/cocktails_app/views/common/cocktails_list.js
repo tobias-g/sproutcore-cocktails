@@ -2,7 +2,9 @@
 // Project:   CocktailsApp - cocktail list
 // Copyright: @2014 Tobias Gray.
 // ==========================================================================
-/*globals CocktailsApp */
+/*globals CocktailsApp, CocktailsCore */
+
+sc_require('gestures/tap');
 
 /**
  * Cocktails list view component used in "all cocktails" view and
@@ -72,11 +74,7 @@ CocktailsApp.CommonCocktailsListView = SC.ListView.extend({
          * a tap.
          * @type {SC.TapGesture}
          */
-        cocktailsListTapGesture: SC.TapGesture.extend({
-            acceptsMultitouch: NO,
-            tapDelay: 200,
-            tapWiggle: 20
-        }),
+        cocktailsListTapGesture: CocktailsApp.TapGesture,
 
         /**
          * Here we would put any code we wanted to run if Sproutcore

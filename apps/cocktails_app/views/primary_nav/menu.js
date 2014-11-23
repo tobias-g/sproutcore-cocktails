@@ -1,3 +1,18 @@
+// ==========================================================================
+// Project:   CocktailsApp - header view
+// Copyright: @2014 Tobias Gray.
+// ==========================================================================
+/*globals CocktailsApp, CocktailsCore */
+
+sc_require('views/primary_nav/menu_item');
+
+/**
+ * The navigation menu that slides in and out from the left
+ * of our application.
+ *
+ * @type {CocktailsApp.PrimaryNavMenu}
+ * @extends {SC.View}
+ */
 CocktailsApp.PrimaryNavMenu = SC.View.extend({
     // we want to be able to toggle this later when pressing
     // the header icon view
@@ -35,68 +50,24 @@ CocktailsApp.PrimaryNavMenu = SC.View.extend({
 
         childViews: ['allCocktailsLinkView', 'personalCocktailsLinkView', 'inventoryLinkView', 'helpLinkView'],
 
-        allCocktailsLinkView: SC.LabelView.design(SC.ActionSupport, {
-            layout: {height: 48},
+        allCocktailsLinkView: CocktailsApp.PrimaryNavMenuItem.design({
             value: 'All Cocktails',
-
-            mouseDown: function(evt) {
-                return YES;
-            },
-
-            mouseUp: function(evt) {
-                // route to single cocktail view
-                SC.routes.set('location', 'all_cocktails');
-                this.fireAction('hideMenuAction');
-                return YES;
-            }
+            routeLocation: 'all_cocktails'
         }),
 
-        personalCocktailsLinkView: SC.LabelView.design(SC.ActionSupport, {
-            layout: {height: 48},
+        personalCocktailsLinkView: CocktailsApp.PrimaryNavMenuItem.design({
             value: 'Personal Cocktails',
-
-            mouseDown: function(evt) {
-                return YES;
-            },
-
-            mouseUp: function(evt) {
-                // route to single cocktail view
-                SC.routes.set('location', 'personal_cocktails');
-                this.fireAction('hideMenuAction');
-                return YES;
-            }
+            routeLocation: 'personal_cocktails'
         }),
 
-        inventoryLinkView: SC.LabelView.design(SC.ActionSupport, {
-            layout: {height: 48},
+        inventoryLinkView: CocktailsApp.PrimaryNavMenuItem.design({
             value: 'Inventory',
-
-            mouseDown: function(evt) {
-                return YES;
-            },
-
-            mouseUp: function(evt) {
-                // route to single cocktail view
-                SC.routes.set('location', 'inventory');
-                this.fireAction('hideMenuAction');
-                return YES;
-            }
+            routeLocation: 'inventory'
         }),
 
-        helpLinkView: SC.LabelView.design(SC.ActionSupport, {
-            layout: {height: 48},
+        helpLinkView: CocktailsApp.PrimaryNavMenuItem.design({
             value: 'Help',
-
-            mouseDown: function(evt) {
-                return YES;
-            },
-
-            mouseUp: function(evt) {
-                // route to single cocktail view
-                SC.routes.set('location', 'help');
-                this.fireAction('hideMenuAction');
-                return YES;
-            }
+            routeLocation: 'help'
         })
     })
 });
