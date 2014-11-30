@@ -117,7 +117,9 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
              * @type {Object}
              */
             options: {
-                size : { w : 32, h : 32}
+                speed : 200,// time for animation to complete
+                easing : mina.backin,// Snap.svg easing see http://snapsvg.io/docs/#mina
+                size : { w : 32, h : 32 }// dimensions of the svg in pixels
             },
 
             didAppendToDocument: function() {
@@ -148,6 +150,46 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
                     self.svg.append( g );
                     self.set('svgIsLoaded', true);
                 });
+            },
+
+            /////////////////////////////
+            // SVG animation functions //
+            /////////////////////////////
+
+            /**
+             * Used to animate the SVG to a certain shape or state. The first parameter
+             * tells the function which state to animate the SVG to while the second is
+             * used to say whether the SVG should animate or simply change without any
+             * animation.
+             *
+             * @param  {String} state       expanded | collapsed
+             * @param  {Boolean} animate    true if animation should occur otherwise
+             *                              suppress animation effects
+             */
+            animateTo: function(state, animate) {
+                for( var i = 0, len = svgIconConfig.hamburger.animation.length; i < len; ++i ) {
+                    var a = svgIconConfig.hamburger.animation[ i ],
+                        iconView = this,
+                        el = iconView.svg.select( a.el ),
+                        animProp = a.animProperties[state],
+                        val = animProp.val;
+
+                    if(animate) {
+                        setTimeout(function( el, val, animProp ) {
+                            return function() { el.animate( JSON.parse( val ), iconView.options.speed, iconView.options.easing, function() {
+                                if( animProp.after ) {
+                                    this.attr( JSON.parse( animProp.after ) );
+                                }
+                                if( animProp.animAfter ) {
+                                    this.animate( JSON.parse( animProp.animAfter ), iconView.options.speed, iconView.options.easing );
+                                }
+                            } ); };
+                        }( el, val, animProp ));
+                    }
+                    else {
+                        el.attr( JSON.parse( val ) );
+                    }
+                }
             }
         })
     }),
