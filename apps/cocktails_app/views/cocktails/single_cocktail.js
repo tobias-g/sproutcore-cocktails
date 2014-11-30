@@ -2,7 +2,9 @@
 // Project:   CocktailsApp - single cocktail
 // Copyright: @2014 Tobias Gray.
 // ==========================================================================
-/*globals CocktailsApp */
+/*globals CocktailsApp, CocktailsCore */
+
+sc_require('views/common/carousel');
 
 /**
  * View for displaying the details of a single cocktail. This view
@@ -27,38 +29,71 @@ CocktailsApp.CocktailsSingleCocktailView = SC.ScrollView.extend({
         childViewLayout: SC.View.VERTICAL_STACK,
 
         /**
-         * TODO: here we will display our cocktails ingredients and
-         * required amounts.
-         * @type {SC.LabelView}
+         * Display of our cocktails ingredients and required amounts.
+         * @type {SC.ListView}
          */
         ingredientsView: SC.ListView.design({
-            contentBinding: 'CocktailsApp.currentCocktailController.memberships',
+            /**
+             * The `CocktailsApp.currentCocktailIngredientsController` is a
+             * 2 dimensional array of ingredients and substitute ingredients
+             * for the current cocktail
+             */
+            contentBinding: 'CocktailsApp.currentCocktailIngredientsController',
 
             classNames: ['cocktail-ingredient-list'],
 
+            /**
+             * Since we are using `childViewLayout` property in the parent
+             * view set to `SC.View.VERTICAL_STACK` we need to set a initial
+             * height so we don't get console warnings
+             * @type {Object}
+             */
             layout: {height: 0},
 
-            showAlternatingRows: true,
+            /**
+             * Set the height for our rows
+             * @type {Number}
+             */
+            rowHeight: 40,
 
-            rowHeight: 32,
+            /**
+             * Use a carousel view for each ingredient so we can also see
+             * alternative ingredient substitutes
+             * @type {CocktailsApp.CommonCarouselView}
+             */
+            exampleView: CocktailsApp.CommonCarouselView.design(SC.ContentDisplay, {
+                classNames: ['ingredient-group-view', 'ingredient-group-carousel'],
 
-            exampleView: SC.View.extend({
-                layout: {height: 32},
+                /**
+                 * Set the example view for each carousel item to be an ingredient
+                 * name and amount
+                 * @type {CocktailsApp.CarouselItemView}
+                 */
+                exampleView: CocktailsApp.CommonCarouselItemView.extend({
+                    classNames: ['ingredient-item-view'],
 
-                classNames: ['cocktail-ingredient-item'],
+                    render: function(context) {
+                        var content = this.get('content');
 
-                childViews: ['ingredientNameView', 'ingredientAmountView'],
+                        context.begin()
+                            .setClass({
+                                'ingredient-item-name': YES
+                            })
+                            .push(content.getPath('ingredient.name'))
+                        .end();
 
-                ingredientNameView: SC.LabelView.design({
-                    classNames: ['ingredient-list-name'],
-                    layout: {right: 120},
-                    valueBinding: '.parentView.content.ingredient.name'
-                }),
+                        context.begin()
+                            .setClass({
+                                'ingredient-item-amount': YES
+                            })
+                            .push(content.get('amount'))
+                        .end();
+                    },
 
-                ingredientAmountView: SC.LabelView.design({
-                    classNames: ['ingredient-list-amount'],
-                    layout: {width: 100, right: 0},
-                    valueBinding: '.parentView.content.amount'
+                    update: function($context) {
+                        $context.find('.ingredient-item-name').text(this.getPath('content.ingredient.name'));
+                        $context.find('.ingredient-item-amount').text(this.getPath('content.amount'));
+                    }
                 })
             })
         }),
@@ -69,6 +104,11 @@ CocktailsApp.CocktailsSingleCocktailView = SC.ScrollView.extend({
          */
         descriptionView: SC.LabelView.design(SC.AutoResize, {
             classNames: ['cocktail-description'],
+
+            // setting our `minHeight` to 0 stops our childViewLayout
+            // of SC.View.VERTICAL_STACK in the parent view logging
+            // warnings in the console.
+            layout: {minHeight: 0},
 
             shouldAutoFitText: NO,
             shouldAutoResize: YES,

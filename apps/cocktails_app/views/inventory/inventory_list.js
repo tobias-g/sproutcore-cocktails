@@ -4,6 +4,8 @@
 // ==========================================================================
 /*globals CocktailsApp, CocktailsCore */
 
+sc_require('gestures/tap');
+
 /**
  * List of ingredients that can be toggled to update what ingredient
  * a user has.

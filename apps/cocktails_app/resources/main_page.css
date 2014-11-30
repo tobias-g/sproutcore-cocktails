@@ -173,14 +173,38 @@ $theme.body-view {
 
     .single-cocktail-view {
         .cocktail-ingredient-list {
-            .ingredient-list-name,
-            .ingredient-list-amount {
-                line-height: 32px;
-                margin: 0px 16px;
+            .ingredient-group-view {
+                .carousel-nav-button {
+                    line-height: 32px;
+                    text-align: center;
+                    background: $secondary-dark;
+                    color: $text-light;
+                }
+
+                .ingredient-item-view {
+                    .ingredient-item-name,
+                    .ingredient-item-amount {
+                        line-height: 40px;
+                        position: absolute;
+                    }
+
+                    .ingredient-item-name {
+                        left: 50px;
+                        right: 150px;
+                    }
+                    .ingredient-item-amount {
+                        width: 100px;
+                        right: 50px;
+                    }
+                }
             }
 
-            .cocktail-ingredient-item:nth-child(even) {
+            .ingredient-group-view:nth-child(even) {
                 background: $light-grey;
+
+                .collection {
+                    background: none;
+                }
             }
 
             border-bottom: $grey solid 1px;

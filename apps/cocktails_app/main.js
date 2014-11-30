@@ -123,6 +123,7 @@ CocktailsApp.setupControllers = function setupControllers() {
     CocktailsApp.primaryHeaderController = CocktailsApp.PrimaryHeaderController.create();
     CocktailsApp.allCocktailsController = CocktailsApp.AllCocktailsController.create();
     CocktailsApp.currentCocktailController = CocktailsApp.CurrentCocktailController.create();
+    CocktailsApp.currentCocktailIngredientsController = CocktailsApp.CurrentCocktailIngredientsController.create();
     CocktailsApp.currentUserController = CocktailsApp.CurrentUserController.create();
     CocktailsApp.ingredientsController = CocktailsApp.IngredientsController.create();
     CocktailsApp.inventoryController = CocktailsApp.InventoryController.create();
