@@ -7,7 +7,8 @@ $theme.sc-regular-size {
 $theme.primary-header-view {
     background: $primary-brand;
 
-    .primary-header-icon {
+    .primary-header-icon,
+    .primary-header-icon * {
         background: $primary-dark;
         cursor: pointer;
     }

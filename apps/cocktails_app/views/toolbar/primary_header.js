@@ -33,13 +33,16 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
      * TODO: add ability to use the icon as a back button when
      * viewing a single cocktail
      */
-    leftIconView: SC.ImageView.design(SC.ActionSupport, SC.Gesturable, {
+    leftIconView: SC.View.design(SC.ActionSupport, SC.Gesturable, {
         classNames: ['primary-header-icon'],
 
         layout: {height: 52, width: 52},
 
-        scale: SC.SCALE_NONE,
-        value: sc_static('/images/hamburger.png'),
+        childViews: ['svgIconView'],
+
+        ////////////////////
+        // Desktop Events //
+        ////////////////////
 
         mouseDown: function(evt) {
             return YES;
@@ -94,7 +97,59 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
          */
         tap: function(touch) {
             this.mouseUp(touch);
-        }
+        },
+
+        /**
+         * View that contains our SVG icon
+         */
+        svgIconView: SC.View.design({
+            layout: {left: 10, top: 10, width: 32, height: 32},
+
+            /**
+             * Flag to say if SVG is loaded and appended ready
+             * for manipulation.
+             * @type {Boolean}
+             */
+            svgIsLoaded: false,
+
+            /**
+             * SVG options describing aspects of our SVG icon
+             * @type {Object}
+             */
+            options: {
+                size : { w : 32, h : 32}
+            },
+
+            didAppendToDocument: function() {
+                // create the svg using snap svg
+                var svg = Snap( this.options.size.w, this.options.size.h );
+
+                // our SVG file (hamburger.svg) defines a width and height of
+                // 64 by 64. Here we set the view port (via the viewBox attribute)
+                // which defines how much of the SVG we want to display. Since
+                // we want to obviously display all of our SVG we set the viewBox
+                // to from x & y point 0 to 64 on both axis
+                svg.attr( 'viewBox', '0 0 64 64' );
+
+                // append the created svg to the layer
+                this.get('layer').appendChild( svg.node );
+
+                // store a reference to this for the snap svg load
+                // callback and also store the svg container to append
+                // the resulting graphic too in the load callback
+                var self = this;
+                this.svg = svg;
+
+                // load external svg
+                Snap.load( svgIconConfig.hamburger.url, function (f) {
+                    // once loaded get the graphic, append it and set the
+                    // views `svgIsLoaded` flag to true
+                    var g = f.select( 'g' );
+                    self.svg.append( g );
+                    self.set('svgIsLoaded', true);
+                });
+            }
+        })
     }),
 
     titleView: SC.LabelView.design({
