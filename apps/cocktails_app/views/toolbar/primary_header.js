@@ -49,7 +49,11 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
         },
 
         mouseUp: function(evt) {
-            var action = CocktailsApp.statechart.stateIsCurrentState('hiddenMenuState') ? 'showMenuAction' : 'hideMenuAction';
+            var inSingleCocktialState = CocktailsApp.statechart.stateIsCurrentState('showingCocktailState'),
+                menuAction = CocktailsApp.statechart.stateIsCurrentState('hiddenMenuState') ? 'showMenuAction' : 'hideMenuAction',
+                action;
+
+            action = inSingleCocktialState ? 'goBackAction' : menuAction ;
 
             this.fireAction(action);
             return YES;

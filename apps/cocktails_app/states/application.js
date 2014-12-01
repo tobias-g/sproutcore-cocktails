@@ -4,6 +4,8 @@
 // ==========================================================================
 /*globals CocktailsApp */
 
+sc_require('states/single_cocktail');
+
 /**
  * Main state-chart that controls the applications main body being
  * displayed. The root states are generally accessed via entering a
@@ -103,25 +105,5 @@ CocktailsApp.ApplicationRootState = SC.State.design({
         }
     }),
 
-    showingCocktailState: SC.State.design({
-        enterState: function() {
-            // set our main application header
-            var cocktailName = CocktailsApp.currentCocktailController.get('name');
-            CocktailsApp.primaryHeaderController.set('displayText', cocktailName ? cocktailName : 'Single Cocktail');
-
-            // switch out applications main body content
-            CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'singleCocktailView');
-        },
-
-        exitState: function() {
-            // forget previous state
-            this.parentState._prevState = null;
-        },
-
-        goBackAction: function(sender, context) {
-            // go back to the list we came from (either all or personal
-            // cocktails). Defaults to all cocktails list state.
-            SC.routes.set('location', this.parentState._prevState === 'showingPersonalCocktailsState' ? 'personal_cocktails' : 'all_cocktails');
-        }
-    })
+    showingCocktailState: SC.State.plugin('CocktailsApp.SingleCocktailState')
 });
