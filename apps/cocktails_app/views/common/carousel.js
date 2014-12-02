@@ -60,7 +60,7 @@ CocktailsApp.CommonCarouselView = SC.View.extend({
                 isMoving = this.getPath('collectionView.isMoving');
 
             // hide navigation button when dragging carousel
-            if(isMoving) {
+            if(isMoving || !index) {
                 return false;
             }
 
