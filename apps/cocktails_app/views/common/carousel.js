@@ -6,7 +6,6 @@
 
 sc_require('views/common/carousel_item');
 sc_require('views/common/carousel_nav_button');
-sc_require('views/common/carousel_prev_button');
 
 /**
  * A view containing a collection of items that can be viewed
