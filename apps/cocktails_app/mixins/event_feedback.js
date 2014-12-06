@@ -1,3 +1,8 @@
+// ==========================================================================
+// Project:   CocktailsApp.EventFeedback mixin
+// Copyright: ©2014 Tobias Gray
+// ==========================================================================
+
 /**
  * Mixin used for views that have events where we want to give
  * feedback when an event occurs. This mixin holds methods for
@@ -26,8 +31,11 @@ CocktailsApp.EventFeedback = {
             offset = $(layer).offset(),     // find layer offset
             x = evt.clientX - offset.left,  // use offset to calculate contact point x
             y = evt.clientY - offset.top;   // use offset to calculate contact point y
-            id = this.getPath('content.id'),// store cocktail ID we want to navigate to
             callback = callback || null;
+
+        if(isNaN(evt.clientX) || isNaN(evt.clientY)) {
+            throw new Error('Cant create radial feedback without a clientX and clientY of non-numeric value');
+        }
 
         // append the SVG to the cocktail list item
         layer.appendChild( svg.node );
@@ -38,7 +46,7 @@ CocktailsApp.EventFeedback = {
             background: 'none',
             top:0,
             left: 0
-        })
+        });
 
         // create a circle at the point of contact
         var circle = svg.circle( x , y , 2 );
