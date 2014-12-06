@@ -16,8 +16,16 @@ cat > Gemfile <<EOF
 source "http://rubygems.org"
 gem "sproutcore", :path => "./abbot/"
 EOF
+pwd
 bundle install --binstubs
 ln -s ${OLD_PWD} sproutcore-cocktails
+ls
+pwd
+cd sproutcore-cocktails
+pwd
+ls
+cd ..
+ls
 cd sproutcore-cocktails
 
 if [ -z ${TRAVIS_JOB_ID} ]; then
