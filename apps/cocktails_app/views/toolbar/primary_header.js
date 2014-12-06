@@ -5,6 +5,7 @@
 /*globals CocktailsApp, CocktailsCore */
 
 sc_require('gestures/tap');
+sc_require('mixins/event_feedback');
 
 /**
  * The primary header view for the application.
@@ -33,7 +34,7 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
      * TODO: add ability to use the icon as a back button when
      * viewing a single cocktail
      */
-    leftIconView: SC.View.design(SC.ActionSupport, SC.Gesturable, {
+    leftIconView: SC.View.design(SC.ActionSupport, SC.Gesturable, CocktailsApp.EventFeedback, {
         classNames: ['primary-header-icon'],
 
         layout: {height: 52, width: 52},
@@ -49,6 +50,9 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
         },
 
         mouseUp: function(evt) {
+            // give event feedback when a click or touch occurs
+            this._radialFeedback(evt);
+
             var inSingleCocktialState = CocktailsApp.statechart.stateIsCurrentState('showingCocktailState'),
                 menuAction = CocktailsApp.statechart.stateIsCurrentState('hiddenMenuState') ? 'showMenuAction' : 'hideMenuAction',
                 action;
@@ -78,20 +82,6 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
         headerIconTapGesture: CocktailsApp.TapGesture,
 
         /**
-         * Here we would put any code we wanted to run if Sproutcore
-         * though a tap was starting.
-         * @param  {Touch} touch The touch event
-         */
-        tapStart: function(touch) {},
-
-        /**
-         * Here we would put any code to run when Sproutcore confirmed
-         * a tap happened and completed.
-         * @param  {Touch} touch The touch event
-         */
-        tapEnd: function(touch) {},
-
-        /**
          * A shortcut to running code when a tap occurs instead of using
          * `tapStart` and `tapEnd` we use this method which is called when
          * `tapStart` and `tapEnd` are both called (i.e. a tap occurred). In
@@ -99,7 +89,7 @@ CocktailsApp.ToolbarPrimaryHeader = SC.View.extend({
          * tap were a click.
          * @param  {Touch} touch The touch event
          */
-        tap: function(touch) {
+        tap: function(gesture, touch) {
             this.mouseUp(touch);
         },
 

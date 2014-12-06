@@ -56,7 +56,7 @@ CocktailsApp.CommonCarouselNavButtonView = SC.View.extend(SC.Gesturable, {
      * Simple proxy to the mouseUp method
      * @param  {Touch} touch The touch event
      */
-    tap: function(touch) {
+    tap: function(gesture, touch) {
         this.mouseUp(touch);
     }
 });

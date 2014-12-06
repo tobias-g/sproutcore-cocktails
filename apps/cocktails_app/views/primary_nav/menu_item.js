@@ -5,6 +5,7 @@
 /*globals CocktailsApp, CocktailsCore */
 
 sc_require('gestures/tap');
+sc_require('mixins/event_feedback');
 
 /**
  * To cut down on repeated code this view holds the common code for each
@@ -14,7 +15,7 @@ sc_require('gestures/tap');
  * @type {CocktailsApp.PrimaryNavMenuItem}
  * @extends {SC.View}
  */
-CocktailsApp.PrimaryNavMenuItem = SC.LabelView.extend(SC.ActionSupport, SC.Gesturable, {
+CocktailsApp.PrimaryNavMenuItem = SC.LabelView.extend(SC.ActionSupport, SC.Gesturable, CocktailsApp.EventFeedback, {
     layout: {height: 48},
 
     /**
@@ -39,16 +40,29 @@ CocktailsApp.PrimaryNavMenuItem = SC.LabelView.extend(SC.ActionSupport, SC.Gestu
     },
 
     mouseUp: function(evt) {
-        var routeLocation = this.get('routeLocation');
+        var that = this;
 
-        if(!routeLocation) {
-            SC.warn('Oh Noes: this menu item has no route location!');
-            return NO;
-        }
+        // define what should happen after our event feedback
+        var callback = function() {
+            // need to call code within a new runloop as the callback
+            // by default runs outside the main runloop
+            SC.run(function(){
+                var routeLocation = that.get('routeLocation');
 
-        // route to single cocktail view
-        SC.routes.set('location', routeLocation);
-        this.fireAction('hideMenuAction');
+                if(!routeLocation) {
+                    SC.warn('Oh Noes: this menu item has no route location!');
+                    return NO;
+                }
+
+                // route to single cocktail view
+                SC.routes.set('location', routeLocation);
+                that.fireAction('hideMenuAction');
+            });
+        };
+
+        // give event feedback when a click or touch occurs
+        this._radialFeedback(evt, callback);
+
         return YES;
     },
 
@@ -71,20 +85,6 @@ CocktailsApp.PrimaryNavMenuItem = SC.LabelView.extend(SC.ActionSupport, SC.Gestu
     navMenuItemTapGesture: CocktailsApp.TapGesture,
 
     /**
-     * Here we would put any code we wanted to run if Sproutcore
-     * though a tap was starting.
-     * @param  {Touch} touch The touch event
-     */
-    tapStart: function(touch) {},
-
-    /**
-     * Here we would put any code to run when Sproutcore confirmed
-     * a tap happened and completed.
-     * @param  {Touch} touch The touch event
-     */
-    tapEnd: function(touch) {},
-
-    /**
      * A shortcut to running code when a tap occurs instead of using
      * `tapStart` and `tapEnd` we use this method which is called when
      * `tapStart` and `tapEnd` are both called (i.e. a tap occurred). In
@@ -92,7 +92,7 @@ CocktailsApp.PrimaryNavMenuItem = SC.LabelView.extend(SC.ActionSupport, SC.Gestu
      * tap were a click.
      * @param  {Touch} touch The touch event
      */
-    tap: function(touch) {
+    tap: function(gesture, touch) {
         this.mouseUp(touch);
     }
 })

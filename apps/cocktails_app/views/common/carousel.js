@@ -6,6 +6,7 @@
 
 sc_require('views/common/carousel_item');
 sc_require('views/common/carousel_nav_button');
+sc_require('mixins/event_feedback');
 
 /**
  * A view containing a collection of items that can be viewed
@@ -48,7 +49,7 @@ CocktailsApp.CommonCarouselView = SC.View.extend({
      *
      * @type {CocktailsCore.CommonCarouselNavButtonView}
      */
-    prevIconView: CocktailsApp.CommonCarouselNavButtonView.design({
+    prevIconView: CocktailsApp.CommonCarouselNavButtonView.design(CocktailsApp.EventFeedback, {
         layout: {width: 32, left: 4, top: 4, bottom: 4},
 
         render: function(context, firstTime) {
@@ -69,13 +70,25 @@ CocktailsApp.CommonCarouselView = SC.View.extend({
         }.property('collectionView.length', 'collectionView.currentIndex', 'collectionView.isMoving').cacheable(),
 
         mouseUp: function(evt) {
-            var collectionView = this.get('collectionView');
+            var that = this;
 
-            // if no carousel view is set don't do anything
-            if(!collectionView) return NO;
+            // define what should happen after our event feedback
+            var callback = function() {
+                // need to call code within a new runloop as the callback
+                // by default runs outside the main runloop
+                SC.run(function(){
+                    var collectionView = that.get('collectionView');
 
-            // otherwise update the carousel views `currentIndex`
-            collectionView.set('currentIndex', collectionView.get('currentIndex') - 1);
+                    // if no carousel view is set don't do anything
+                    if(!collectionView) return NO;
+
+                    // otherwise update the carousel views `currentIndex`
+                    collectionView.set('currentIndex', collectionView.get('currentIndex') - 1);
+                });
+            };
+
+            // give event feedback when a click or touch occurs
+            this._radialFeedback(evt, callback);
         }
     }),
 
@@ -85,7 +98,7 @@ CocktailsApp.CommonCarouselView = SC.View.extend({
      *
      * @type {CocktailsCore.CommonCarouselNavButtonView}
      */
-    nextIconView: CocktailsApp.CommonCarouselNavButtonView.design({
+    nextIconView: CocktailsApp.CommonCarouselNavButtonView.design(CocktailsApp.EventFeedback, {
         layout: {width: 32, right: 4, top: 4, bottom: 4},
 
         render: function(context, firstTime) {
@@ -107,13 +120,25 @@ CocktailsApp.CommonCarouselView = SC.View.extend({
         }.property('collectionView.length', 'collectionView.currentIndex', 'collectionView.isMoving').cacheable(),
 
         mouseUp: function(evt) {
-            var collectionView = this.get('collectionView');
+            var that = this;
 
-            // if no carousel view is set don't do anything
-            if(!collectionView) return NO;
+            // define what should happen after our event feedback
+            var callback = function() {
+                // need to call code within a new runloop as the callback
+                // by default runs outside the main runloop
+                SC.run(function(){
+                    var collectionView = that.get('collectionView');
 
-            // otherwise update the carousel views `currentIndex`
-            collectionView.set('currentIndex', collectionView.get('currentIndex') + 1);
+                    // if no carousel view is set don't do anything
+                    if(!collectionView) return NO;
+
+                    // otherwise update the carousel views `currentIndex`
+                    collectionView.set('currentIndex', collectionView.get('currentIndex') + 1);
+                });
+            };
+
+            // give event feedback when a click or touch occurs
+            this._radialFeedback(evt, callback);
         }
     }),
 
