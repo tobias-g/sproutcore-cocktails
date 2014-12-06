@@ -22,10 +22,10 @@ cd sproutcore-cocktails
 
 if [ -z ${TRAVIS_JOB_ID} ]; then
     # not running under travis, stay in foreground until stopped
-    /bin/sc-server --host=${IP} --port=${PORT} --allow-from-ips=${ALLOW_IPS:-"*.*.*.*"}
+    ../bin/sc-server --host=${IP} --port=${PORT} --allow-from-ips=${ALLOW_IPS:-"*.*.*.*"}
 else
     # running under travis, daemonize
-    ( /bin/sc-server --host=${IP} --port=${PORT} --allow-from-ips=${ALLOW_IPS:-"*.*.*.*"} & ) || /bin/true
+    ( ../bin/sc-server --host=${IP} --port=${PORT} --allow-from-ips=${ALLOW_IPS:-"*.*.*.*"} & ) || /bin/true
 fi
 cd ${OLD_PWD}
 #rm -rf ${WD}
