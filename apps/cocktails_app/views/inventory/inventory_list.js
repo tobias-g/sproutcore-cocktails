@@ -5,6 +5,7 @@
 /*globals CocktailsApp, CocktailsCore */
 
 sc_require('gestures/tap');
+sc_require('mixins/event_feedback');
 
 /**
  * List of ingredients that can be toggled to update what ingredient
@@ -32,7 +33,7 @@ CocktailsApp.InventoryUserInventoryListView = SC.ListView.extend({
      * not.
      * @type {SC.View}
      */
-    exampleView: SC.View.extend(SC.ContentDisplay, SC.Gesturable, {
+    exampleView: SC.View.extend(SC.ContentDisplay, SC.Gesturable, CocktailsApp.EventFeedback, {
         classNames: ['inventory-item'],
         layout: {height: 54},
 
@@ -59,7 +60,11 @@ CocktailsApp.InventoryUserInventoryListView = SC.ListView.extend({
         },
 
         mouseUp: function(evt) {
-            // toggle the inventory item
+
+            // give event feedback when a click or touch occurs
+            this._radialFeedback(evt);
+
+            // toggle the inventory item immediately (i.e. don't use animation callback)
             this.toggleInventoryItem();
 
             return YES;
@@ -105,7 +110,7 @@ CocktailsApp.InventoryUserInventoryListView = SC.ListView.extend({
          * tap were a click.
          * @param  {Touch} touch The touch event
          */
-        tap: function(touch) {
+        tap: function(gesture, touch) {
             this.mouseUp(touch);
         },
 
