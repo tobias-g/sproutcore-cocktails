@@ -190,6 +190,6 @@ CocktailsCore.ToolbarPrimaryHeader = SC.View.extend({
 
         classNames: ['primary-header-title'],
 
-        valueBinding: SC.Binding.oneWay('CocktailsApp.primaryHeaderController.displayText')
+        valueBinding: SC.Binding.oneWay('CocktailsCore.primaryHeaderController.displayText')
     })
 });

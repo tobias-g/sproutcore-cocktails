@@ -52,7 +52,7 @@ CocktailsApp.ApplicationRootState = SC.State.design({
 
         // set the current cocktail controllers content to the cocktail
         // with the id passed as the context.
-        CocktailsApp.currentCocktailController.set('content', CocktailsApp.store.find(CocktailsApp.Cocktail, context));
+        CocktailsCore.currentCocktailController.set('content', CocktailsApp.store.find(CocktailsCore.Cocktail, context));
 
         this.gotoState('showingCocktailState');
     },
@@ -64,7 +64,7 @@ CocktailsApp.ApplicationRootState = SC.State.design({
     showingAllCocktailsState: SC.State.design({
         enterState: function() {
             // set our main application header
-            CocktailsApp.primaryHeaderController.set('displayText', 'All Cocktails');
+            CocktailsCore.primaryHeaderController.set('displayText', 'All Cocktails');
 
             // switch out applications main body content
             CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'allCocktailListView');
@@ -74,13 +74,13 @@ CocktailsApp.ApplicationRootState = SC.State.design({
     showingPersonalCocktailsState: SC.State.design({
         enterState: function() {
             // set our main application header
-            CocktailsApp.primaryHeaderController.set('displayText', 'Personal Cocktails');
+            CocktailsCore.primaryHeaderController.set('displayText', 'Personal Cocktails');
 
             // switch out applications main body content
             CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'personalCocktailListView');
 
-            if(CocktailsApp.personalCocktailsController.get('needsUpdate')) {
-                CocktailsApp.personalCocktailsController.refreshContent();
+            if(CocktailsCore.personalCocktailsController.get('needsUpdate')) {
+                CocktailsCore.personalCocktailsController.refreshContent();
             }
         }
     }),
@@ -88,7 +88,7 @@ CocktailsApp.ApplicationRootState = SC.State.design({
     showingInventoryState: SC.State.design({
         enterState: function() {
             // set our main application header
-            CocktailsApp.primaryHeaderController.set('displayText', 'Inventory');
+            CocktailsCore.primaryHeaderController.set('displayText', 'Inventory');
 
             // switch out applications main body content
             CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'inventoryView');
@@ -98,7 +98,7 @@ CocktailsApp.ApplicationRootState = SC.State.design({
     showingHelpState: SC.State.design({
         enterState: function() {
             // set our main application header
-            CocktailsApp.primaryHeaderController.set('displayText', 'Help');
+            CocktailsCore.primaryHeaderController.set('displayText', 'Help');
 
             // switch out applications main body content
             CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'helpView');

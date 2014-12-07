@@ -50,8 +50,8 @@ CocktailsApp.ReadyRootState = SC.State.extend({
                 ingredients = CocktailsApp.store.find(CocktailsCore.Ingredient);
 
             // Set the content property on the primary controllers.
-            CocktailsApp.allCocktailsController.set('content', cocktails);
-            CocktailsApp.ingredientsController.set('content', ingredients);
+            CocktailsCore.allCocktailsController.set('content', cocktails);
+            CocktailsCore.ingredientsController.set('content', ingredients);
 
             ////////////////
             // User setup //
@@ -67,7 +67,7 @@ CocktailsApp.ReadyRootState = SC.State.extend({
                 user.commitRecord();
             }
 
-            CocktailsApp.currentUserController.set('content', user);
+            CocktailsCore.currentUserController.set('content', user);
 
             // All loading and application setup is done so go to the readyState
             this.get('statechart').sendAction('doFinishLoadingAction');

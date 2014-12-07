@@ -20,13 +20,13 @@ CocktailsCore.InventoryController = SC.ArrayController.extend({
      * All ingredients the application knows about
      * @type {Array}
      */
-    ingredientsBinding: SC.Binding.oneWay('CocktailsApp.ingredientsController'),
+    ingredientsBinding: SC.Binding.oneWay('CocktailsCore.ingredientsController'),
 
     /**
      * Ingredients the current user has associated to them
      * @type {Array}
      */
-    userIngredientsBinding: 'CocktailsApp.currentUserController.content.ingredients',
+    userIngredientsBinding: 'CocktailsCore.currentUserController.content.ingredients',
 
     /**
      * Flag to determine if all ingredients and user inventory is loaded
@@ -130,7 +130,7 @@ CocktailsCore.InventoryController = SC.ArrayController.extend({
      * `_loadUserInventory`
      */
     selectionObserver: function (item, key, value, revision) {
-        var user = CocktailsApp.currentUserController.get('content');
+        var user = CocktailsCore.currentUserController.get('content');
 
         // a user has checked or unchecked an ingredient so
         // we need to update the users ingredients property
@@ -150,7 +150,7 @@ CocktailsCore.InventoryController = SC.ArrayController.extend({
 
             // tell the personal cocktail controller it needs to update
             // its content next time we enter the personal cocktails state
-            CocktailsApp.personalCocktailsController.set('needsUpdate', true);
+            CocktailsCore.personalCocktailsController.set('needsUpdate', true);
         }
     }
 });

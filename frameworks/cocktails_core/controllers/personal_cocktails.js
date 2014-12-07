@@ -19,7 +19,7 @@ CocktailsCore.PersonalCocktailsController = SC.ArrayController.extend({
      * refresh it when we update the users inventory
      */
     refreshContent: function() {
-        var inventory = CocktailsApp.currentUserController.getPath('content.ingredients');
+        var inventory = CocktailsCore.currentUserController.getPath('content.ingredients');
 
         query = SC.Query.create({
             conditions: "memberships SATISFIED_BY {user_ingredients}",

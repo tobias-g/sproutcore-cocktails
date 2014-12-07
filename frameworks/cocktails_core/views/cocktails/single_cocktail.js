@@ -8,7 +8,7 @@ sc_require('views/common/carousel');
 
 /**
  * View for displaying the details of a single cocktail. This view
- * gets its data from the CocktailsApp.currentCocktailController.
+ * gets its data from the CocktailsCore.currentCocktailController.
  * @type {CocktailsCore.CocktailsSingleCocktailView}
  * @extends {SC.SCrollView}
  */
@@ -34,11 +34,11 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
          */
         ingredientsView: SC.ListView.design({
             /**
-             * The `CocktailsApp.currentCocktailIngredientsController` is a
+             * The `CocktailsCore.currentCocktailIngredientsController` is a
              * 2 dimensional array of ingredients and substitute ingredients
              * for the current cocktail
              */
-            contentBinding: 'CocktailsApp.currentCocktailIngredientsController',
+            contentBinding: 'CocktailsCore.currentCocktailIngredientsController',
 
             classNames: ['cocktail-ingredient-list'],
 
@@ -115,7 +115,7 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
             shouldResizeHeight: YES,
             shouldResizeWidth: NO,
 
-            valueBinding: SC.Binding.oneWay('CocktailsApp.currentCocktailController.description'),
+            valueBinding: SC.Binding.oneWay('CocktailsCore.currentCocktailController.description'),
         })
     })
 })

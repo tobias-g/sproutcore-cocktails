@@ -28,7 +28,7 @@ CocktailsCore.ApplicationBody = SC.ContainerView.extend({
 
         contentView: CocktailsCore.CommonCocktailsListView.design({
             // bind the list views content to the content of our all cocktails controller
-            contentBinding: SC.Binding.oneWay('CocktailsApp.allCocktailsController')
+            contentBinding: SC.Binding.oneWay('CocktailsCore.allCocktailsController')
         })
     }),
 
@@ -46,7 +46,7 @@ CocktailsCore.ApplicationBody = SC.ContainerView.extend({
 
         contentView: CocktailsCore.CommonCocktailsListView.design({
             // bind the list views content to the content of our all cocktails controller
-            contentBinding: SC.Binding.oneWay('CocktailsApp.personalCocktailsController')
+            contentBinding: SC.Binding.oneWay('CocktailsCore.personalCocktailsController')
         })
     }),
 
@@ -64,7 +64,7 @@ CocktailsCore.ApplicationBody = SC.ContainerView.extend({
 
         contentView: CocktailsCore.InventoryUserInventoryListView.design({
             // bind the list views content to the content of our ingredients controller
-            contentBinding: SC.Binding.oneWay('CocktailsApp.inventoryController')
+            contentBinding: SC.Binding.oneWay('CocktailsCore.inventoryController')
         })
     }),
 

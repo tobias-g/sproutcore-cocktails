@@ -10,7 +10,7 @@
 CocktailsApp.SingleCocktailState = SC.State.design({
     enterState: function() {
         // set our main application header
-        var cocktailName = CocktailsApp.currentCocktailController.get('name'),
+        var cocktailName = CocktailsCore.currentCocktailController.get('name'),
             iconView = CocktailsApp.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
 
         // check the SVG icon is loaded otherwise we need to setup an
@@ -23,7 +23,7 @@ CocktailsApp.SingleCocktailState = SC.State.design({
         }
 
         // set primary header title to the cocktails name
-        CocktailsApp.primaryHeaderController.set('displayText', cocktailName ? cocktailName : 'Single Cocktail');
+        CocktailsCore.primaryHeaderController.set('displayText', cocktailName ? cocktailName : 'Single Cocktail');
 
         // switch out applications main body content
         CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'singleCocktailView');
