@@ -50,8 +50,9 @@ CocktailsCore.ToolbarPrimaryHeader = SC.View.extend({
             // give event feedback when a click or touch occurs
             this._radialFeedback(evt);
 
-            var inSingleCocktialState = CocktailsApp.statechart.stateIsCurrentState('showingCocktailState'),
-                menuAction = CocktailsApp.statechart.stateIsCurrentState('hiddenMenuState') ? 'showMenuAction' : 'hideMenuAction',
+            var statechart = SC.RootResponder.responder.defaultResponder,
+                inSingleCocktialState = statechart.stateIsCurrentState('showingCocktailState'),
+                menuAction = statechart.stateIsCurrentState('hiddenMenuState') ? 'showMenuAction' : 'hideMenuAction',
                 action;
 
             action = inSingleCocktialState ? 'goBackAction' : menuAction ;

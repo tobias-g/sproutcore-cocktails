@@ -8,7 +8,7 @@ CocktailsCore.CurrentCocktailController = SC.ObjectController.extend({
     /**
      * Cocktail record if a cocktail is being viewed
      * otherwise null.
-     * @type {CocktailsApp.Cocktail}
+     * @type {CocktailsCore.Cocktail}
      */
     content: null
 });

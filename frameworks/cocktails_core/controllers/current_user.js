@@ -7,7 +7,7 @@
 CocktailsCore.CurrentUserController = SC.ObjectController.extend({
     /**
      * User record of the current user
-     * @type {CocktailsApp.User}
+     * @type {CocktailsCore.User}
      */
     content: null
 });

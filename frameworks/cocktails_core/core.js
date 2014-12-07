@@ -84,7 +84,7 @@ CocktailsCore = SC.Object.create(
         // <code><pre>
         //      http://localhost:4020/cocktails_app#cocktails/123
         // </pre></code>
-        // CocktailsApp.routes will take care of these routes
+        // CocktailsCore will take care of these routes
         // shifting the application to the correct state.
         SC.routes.add(':resource/:identifier', CocktailsCore, 'gotoRoute');
 
@@ -97,7 +97,7 @@ CocktailsCore = SC.Object.create(
         //      http://localhost:4020/cocktails_app#inventory
         //      http://localhost:4020/cocktails_app#help
         // </pre></code>
-        // CocktailsApp.routes will take care of these routes
+        // CocktailsCore will take care of these routes
         // shifting the application to the correct state.
         SC.routes.add(':route', CocktailsCore, 'gotoRoute');
 
@@ -105,7 +105,7 @@ CocktailsCore = SC.Object.create(
         // This is used when the URL is specified upon start up without
         // any parameters: 'http://localhost:4020/cocktails_route'.
         //
-        // CocktailsApp.routes will default to the all cocktails state.
+        // CocktailsCore will default to the all cocktails state.
         SC.routes.add(':', CocktailsCore, 'gotoRoute');
     },
 

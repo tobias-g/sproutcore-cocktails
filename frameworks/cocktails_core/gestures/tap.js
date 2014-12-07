@@ -1,8 +1,8 @@
 // ==========================================================================
-// Project:   CocktailsApp - tap gesture
+// Project:   CocktailsCore - tap gesture
 // Copyright: @2014 Tobias Gray.
 // ==========================================================================
-/*globals CocktailsApp, CocktailsCore */
+/*globals CocktailsCore */
 
 /**
  * A generic tap gesture used throughout the application

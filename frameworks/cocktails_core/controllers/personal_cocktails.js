@@ -18,7 +18,7 @@ CocktailsCore.PersonalCocktailsController = SC.ArrayController.extend({
      * when to query the store as its rather expensive and we only want to
      * refresh it when we update the users inventory
      */
-    refreshContent: function() {
+    refreshContent: function(store) {
         var inventory = CocktailsCore.currentUserController.getPath('content.ingredients');
 
         query = SC.Query.create({
@@ -28,7 +28,7 @@ CocktailsCore.PersonalCocktailsController = SC.ArrayController.extend({
             orderBy: "name"
         });
 
-        this.set('content', CocktailsApp.store.find(query));
+        this.set('content', store.find(query));
 
         this.set('needsUpdate', false);
     }
