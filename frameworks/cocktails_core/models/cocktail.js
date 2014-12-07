@@ -6,10 +6,10 @@
  * TODO: add the relationship between cocktails
  * and ingredients via memberships.
  *
- * @type {CocktailsApp.Cocktail}
+ * @type {CocktailsCore.Cocktail}
  * @extends {SC.Record}
  */
-CocktailsApp.Cocktail = SC.Record.extend({
+CocktailsCore.Cocktail = SC.Record.extend({
 
     /**
      * Set our primary key property as 'id'
@@ -40,7 +40,7 @@ CocktailsApp.Cocktail = SC.Record.extend({
      * what substitutes could be used for an ingredient.
      * @type {[type]}
      */
-    memberships: SC.Record.toMany('CocktailsApp.Membership', {
+    memberships: SC.Record.toMany('CocktailsCore.Membership', {
         key: 'memberships',
         isMaster: YES,
         inverse: 'cocktail'

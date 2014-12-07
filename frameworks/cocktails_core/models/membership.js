@@ -5,10 +5,10 @@
  * used instead. The membership model takes this into account with
  * the listIndex and substituteIndex properties.
  *
- * @type {CocktailsApp.Membership}
+ * @type {CocktailsCore.Membership}
  * @extends {SC.Record}
  */
-CocktailsApp.Membership = SC.Record.extend({
+CocktailsCore.Membership = SC.Record.extend({
 
     /**
      * Set our primary key property as 'id'
@@ -18,18 +18,18 @@ CocktailsApp.Membership = SC.Record.extend({
 
     /**
      * Single cocktail this membership refers to.
-     * @type {CocktailsApp.Cocktail}
+     * @type {CocktailsCore.Cocktail}
      */
-    cocktail: SC.Record.toOne('CocktailsApp.Cocktail', {
+    cocktail: SC.Record.toOne('CocktailsCore.Cocktail', {
         key: 'cocktail',
         isMaster: NO
     }),
 
     /**
      * The ingredient this membership refers to.
-     * @type {CocktailsApp.Ingredient}
+     * @type {CocktailsCore.Ingredient}
      */
-    ingredient: SC.Record.toOne('CocktailsApp.Ingredient', {
+    ingredient: SC.Record.toOne('CocktailsCore.Ingredient', {
         key: 'ingredient'
     }),
 

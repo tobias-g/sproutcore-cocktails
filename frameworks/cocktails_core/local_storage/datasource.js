@@ -38,7 +38,7 @@ CocktailsCore.LocalStorage = SC.DataSource.extend(
 
         // this datasource onlys deal with User records. Returning NO (false) tells the cascaded
         // datasource to try the next datasource.
-        if(recordType !== CocktailsApp.User) { return NO; }
+        if(recordType !== CocktailsCore.User) { return NO; }
 
         // get our data for all records of this type
         var data = this._dataForRecordType(recordType);
@@ -66,7 +66,7 @@ CocktailsCore.LocalStorage = SC.DataSource.extend(
 
         // this datasource onlys deal with User records. Returning NO (false) tells the cascaded
         // datasource to try the next datasource.
-        if(recordType !== CocktailsApp.User) { return NO; }
+        if(recordType !== CocktailsCore.User) { return NO; }
 
         // get the data hash for the record
         var data = store.readDataHash(storeKey);
@@ -98,7 +98,7 @@ CocktailsCore.LocalStorage = SC.DataSource.extend(
 
         // this datasource onlys deal with User records. Returning NO (false) tells the cascaded
         // datasource to try the next datasource.
-        if(recordType !== CocktailsApp.User) { return NO; }
+        if(recordType !== CocktailsCore.User) { return NO; }
 
         // get our data for all records of this type
         var data = this._dataForRecordType(recordType);
@@ -115,7 +115,7 @@ CocktailsCore.LocalStorage = SC.DataSource.extend(
 
         // this datasource onlys deal with User records. Returning NO (false) tells the cascaded
         // datasource to try the next datasource.
-        if(recordType !== CocktailsApp.User) { return NO; }
+        if(recordType !== CocktailsCore.User) { return NO; }
 
         // get the records data and guid
         var data = store.readDataHash(storeKey),
@@ -139,7 +139,7 @@ CocktailsCore.LocalStorage = SC.DataSource.extend(
 
         // this datasource onlys deal with User records. Returning NO (false) tells the cascaded
         // datasource to try the next datasource.
-        if(recordType !== CocktailsApp.User) { return NO; }
+        if(recordType !== CocktailsCore.User) { return NO; }
 
         // get the records data and guid
         var data = this._dataForRecordType(recordType),

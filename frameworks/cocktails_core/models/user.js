@@ -4,10 +4,10 @@
  * against them thus storing an inventory to use
  * when determining a users personal cocktails.
  *
- * @type {CocktailsApp.User}
+ * @type {CocktailsCore.User}
  * @extends {SC.Record}
  */
-CocktailsApp.User = SC.Record.extend({
+CocktailsCore.User = SC.Record.extend({
 
     /**
      * Set our primary key property as 'id'
@@ -33,9 +33,9 @@ CocktailsApp.User = SC.Record.extend({
 
     /**
      * Array of the ingredients (or inventory) associated with the user
-     * @type {CocktailsApp.Ingredient}
+     * @type {CocktailsCore.Ingredient}
      */
-    ingredients: SC.Record.toMany('CocktailsApp.Ingredient', {
+    ingredients: SC.Record.toMany('CocktailsCore.Ingredient', {
         key: 'ingredients',
         isMaster: YES,
     })

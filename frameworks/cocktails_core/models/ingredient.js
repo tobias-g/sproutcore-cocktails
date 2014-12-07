@@ -3,10 +3,10 @@
  * a name and description. If no description is
  * present for the record we set it to a default value.
  *
- * @type {CocktailsApp.Ingredient}
+ * @type {CocktailsCore.Ingredient}
  * @extends {SC.Record}
  */
-CocktailsApp.Ingredient = SC.Record.extend({
+CocktailsCore.Ingredient = SC.Record.extend({
 
     /**
      * Set our primary key property as 'id'
@@ -39,7 +39,7 @@ CocktailsApp.Ingredient = SC.Record.extend({
     /**
      * Transient property used to track if a user has the ingredient
      * record in their inventory. This relationship is persisted via
-     * the CocktailsApp.User ingredients property and once these are
+     * the CocktailsCore.User ingredients property and once these are
      * loaded each ingredients model hasIngredient is updated.
      * @type {Boolean}
      */

@@ -46,8 +46,8 @@ CocktailsApp.ReadyRootState = SC.State.extend({
             ///////////////////////////////
 
             // Query the store
-            var cocktails = CocktailsApp.store.find(CocktailsApp.Cocktail),
-                ingredients = CocktailsApp.store.find(CocktailsApp.Ingredient);
+            var cocktails = CocktailsApp.store.find(CocktailsCore.Cocktail),
+                ingredients = CocktailsApp.store.find(CocktailsCore.Ingredient);
 
             // Set the content property on the primary controllers.
             CocktailsApp.allCocktailsController.set('content', cocktails);
@@ -58,12 +58,12 @@ CocktailsApp.ReadyRootState = SC.State.extend({
             ////////////////
 
             // check if a local user exists if not create one
-            var users = CocktailsApp.store.find(CocktailsApp.User),
+            var users = CocktailsApp.store.find(CocktailsCore.User),
                 user = users.firstObject();
 
             // if there is no local user create one
             if(!user) {
-                user = CocktailsApp.store.createRecord(CocktailsApp.User, {});
+                user = CocktailsApp.store.createRecord(CocktailsCore.User, {});
                 user.commitRecord();
             }
 

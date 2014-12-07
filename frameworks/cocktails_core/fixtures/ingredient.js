@@ -1,6 +1,6 @@
 sc_require('models/ingredient');
 
-CocktailsApp.Ingredient.FIXTURES = [
+CocktailsCore.Ingredient.FIXTURES = [
     {
         "id": 1,
         "name": "Gin"

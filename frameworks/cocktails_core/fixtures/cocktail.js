@@ -1,6 +1,6 @@
 sc_require('models/cocktail');
 
-CocktailsApp.Cocktail.FIXTURES = [
+CocktailsCore.Cocktail.FIXTURES = [
     {
         "id": 1,
         "name": "Dry Martini",

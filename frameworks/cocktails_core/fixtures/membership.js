@@ -1,6 +1,6 @@
 sc_require('models/membership');
 
-CocktailsApp.Membership.FIXTURES = [
+CocktailsCore.Membership.FIXTURES = [
     // Dry Martini
     {
         "id": 1,

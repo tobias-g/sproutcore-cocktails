@@ -24,7 +24,7 @@ CocktailsCore.PersonalCocktailsController = SC.ArrayController.extend({
         query = SC.Query.create({
             conditions: "memberships SATISFIED_BY {user_ingredients}",
             parameters: { user_ingredients: inventory },
-            recordType: CocktailsApp.Cocktail,
+            recordType: CocktailsCore.Cocktail,
             orderBy: "name"
         });
 
