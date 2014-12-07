@@ -6,8 +6,7 @@
 # required frameworks
 config :cocktails_app, :required => [
     :sproutcore,
-    :cocktails_core,
-    :cordova
+    :cocktails_core
 ],
 
 # use fixtures instead of a API. This is as the current cocktails

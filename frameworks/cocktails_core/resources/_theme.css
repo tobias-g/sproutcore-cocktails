@@ -1,0 +1,30 @@
+/*
+    This defines the global $theme variable for use inside the CSS.
+    The $theme variable holds the CSS class names for your theme.
+*/
+$theme: '.ace.cocktails-app';
+
+/*
+    Theme colours
+ */
+$primary-brand: #00AAFF;
+$secondary-brand: #78D4FF;
+$body-brand: #F7F6EB;
+$primary-dark: #3B3B3D;
+$secondary-dark: #5E6467;
+$light-grey: #ddd;
+$grey: #ccc;
+
+/*
+    Text colours
+ */
+$text-dark: #333;
+$text-light: #F7F6EB;
+
+/*
+    Import Roboto fonts
+ */
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url(resources/RobotoTTF/Roboto-Regular.ttf) format("truetype");
+}

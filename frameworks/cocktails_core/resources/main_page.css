@@ -1,0 +1,218 @@
+$theme.sc-regular-size {
+    font-family: 'Roboto-Regular';
+    font-size: 14px;
+    color: $text-dark;
+}
+
+$theme.primary-header-view {
+    background: $primary-brand;
+
+    .primary-header-icon,
+    .primary-header-icon * {
+        background: $primary-dark;
+        cursor: pointer;
+    }
+
+    .primary-header-title {
+        text-align: left;
+        line-height: 52px;
+        border-bottom: $secondary-brand solid 4px;
+        padding: 0px 52px 0px 16px;
+        font-size: 16px;
+        color: $text-light;
+    }
+}
+
+$theme.primary-menu-view {
+    background: $secondary-dark;
+
+    .sc-label-view {
+        line-height: 48px;
+        padding: 0px 16px;
+        color: $text-light;
+        cursor: pointer;
+    }
+}
+
+$theme.body-view {
+    background: $body-brand;
+
+    .personal-cocktails-view,
+    .all-cocktails-view {
+        .collection {
+            background: none;
+        }
+
+        .cocktail-item {
+            cursor: pointer;
+
+            .cocktails-item-icon {
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                left: 18px;
+                top: 18px;
+                background: $primary-dark;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    width: 40px;
+                    height: 40px;
+                    left: -2px;
+                    top: -2px;
+                    background: $secondary-dark;
+                    -webkit-border-radius: 20px;
+                    -moz-border-radius: 20px;
+                    border-radius: 20px;
+                }
+            }
+
+            .cocktails-item-name {
+                position: absolute;
+                left: 72px;
+                height: 14px;
+                top: 50%;
+                right: 16px;
+                margin-top: -16px;
+                overflow: hidden;
+            }
+
+            .cocktails-item-description {
+                position: absolute;
+                left: 72px;
+                height: 14px;
+                top: 50%;
+                right: 16px;
+                margin-top: 2px;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .inventory-view {
+        .collection {
+            background: none;
+        }
+
+        .inventory-item {
+            cursor: pointer;
+
+            .inventory-check-box {
+                background: $secondary-brand;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                left: 14px;
+                top: 10px;
+
+                 &:before {
+                    content: "";
+                    position: absolute;
+                    width: 30px;
+                    height: 30px;
+                    left: 2px;
+                    top: 2px;
+                    background: $primary-brand;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    border-radius: 5px;
+                }
+
+                /**
+                 * check-box style when selected
+                 */
+                &.sel:after {
+                    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+                    filter: alpha(opacity=100);
+                    opacity: 1;
+                }
+
+                &:after {
+                    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+                    filter: alpha(opacity=0);
+                    opacity: 0;
+                    content: '';
+                    position: absolute;
+                    width: 14px;
+                    height: 7px;
+                    background: transparent;
+                    top: 10px;
+                    left: 8px;
+                    border: 4px solid $text-light;
+                    border-top: none;
+                    border-right: none;
+
+                    -webkit-transform: rotate(-45deg);
+                    -moz-transform: rotate(-45deg);
+                    -o-transform: rotate(-45deg);
+                    -ms-transform: rotate(-45deg);
+                    transform: rotate(-45deg);
+                }
+            }
+            .inventory-ingredient-name {
+                position: absolute;
+                left: 62px;
+                right: 16px;
+                padding: 0px 10px;
+                overflow: hidden;
+                line-height: 53px;
+                border-bottom: $light-grey solid 1px;
+            }
+        }
+    }
+
+    .help-view {
+        padding: 10px;
+    }
+
+    .single-cocktail-view {
+        .cocktail-ingredient-list {
+            .ingredient-group-view {
+                .carousel-nav-button {
+                    line-height: 32px;
+                    text-align: center;
+                    background: $secondary-dark;
+                    color: $text-light;
+                }
+
+                .ingredient-item-view {
+                    .ingredient-item-name,
+                    .ingredient-item-amount {
+                        line-height: 40px;
+                        position: absolute;
+                    }
+
+                    .ingredient-item-name {
+                        left: 50px;
+                        right: 150px;
+                    }
+                    .ingredient-item-amount {
+                        width: 100px;
+                        right: 50px;
+                    }
+                }
+            }
+
+            .ingredient-group-view:nth-child(even) {
+                background: $light-grey;
+
+                .collection {
+                    background: none;
+                }
+            }
+
+            border-bottom: $grey solid 1px;
+        }
+
+        .cocktail-description {
+            padding: 16px;
+        }
+    }
+}

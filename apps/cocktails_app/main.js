@@ -120,14 +120,14 @@ CocktailsApp.main = function main() {
  * the application needs before we run the application.
  */
 CocktailsApp.setupControllers = function setupControllers() {
-    CocktailsApp.primaryHeaderController = CocktailsApp.PrimaryHeaderController.create();
-    CocktailsApp.allCocktailsController = CocktailsApp.AllCocktailsController.create();
-    CocktailsApp.currentCocktailController = CocktailsApp.CurrentCocktailController.create();
-    CocktailsApp.currentCocktailIngredientsController = CocktailsApp.CurrentCocktailIngredientsController.create();
-    CocktailsApp.currentUserController = CocktailsApp.CurrentUserController.create();
-    CocktailsApp.ingredientsController = CocktailsApp.IngredientsController.create();
-    CocktailsApp.inventoryController = CocktailsApp.InventoryController.create();
-    CocktailsApp.personalCocktailsController = CocktailsApp.PersonalCocktailsController.create();
+    CocktailsApp.primaryHeaderController = CocktailsCore.PrimaryHeaderController.create();
+    CocktailsApp.allCocktailsController = CocktailsCore.AllCocktailsController.create();
+    CocktailsApp.currentCocktailController = CocktailsCore.CurrentCocktailController.create();
+    CocktailsApp.currentCocktailIngredientsController = CocktailsCore.CurrentCocktailIngredientsController.create();
+    CocktailsApp.currentUserController = CocktailsCore.CurrentUserController.create();
+    CocktailsApp.ingredientsController = CocktailsCore.IngredientsController.create();
+    CocktailsApp.inventoryController = CocktailsCore.InventoryController.create();
+    CocktailsApp.personalCocktailsController = CocktailsCore.PersonalCocktailsController.create();
 }
 
 

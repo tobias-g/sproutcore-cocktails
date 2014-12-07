@@ -2,12 +2,7 @@
 // Project:   CocktailsApp - mainPage
 // Copyright: @2014 Tobias Gray
 // ==========================================================================
-/*globals CocktailsApp */
-
-// require the views we need within the main pane
-sc_require('views/toolbar/primary_header');
-sc_require('views/primary_nav/menu');
-sc_require('views/application_body');
+/*globals CocktailsApp, CocktailsCore */
 
 // This page describes the main user interface for the application.
 CocktailsApp.mainPage = SC.Page.design({
@@ -16,10 +11,10 @@ CocktailsApp.mainPage = SC.Page.design({
 
         childViews: ['bodyView', 'primaryHeaderView', 'leftNavView'],
 
-        primaryHeaderView: CocktailsApp.ToolbarPrimaryHeader,
+        primaryHeaderView: CocktailsCore.ToolbarPrimaryHeader,
 
-        leftNavView: CocktailsApp.PrimaryNavMenu,
+        leftNavView: CocktailsCore.PrimaryNavMenu,
 
-        bodyView: CocktailsApp.ApplicationBody
+        bodyView: CocktailsCore.ApplicationBody
     })
 });
