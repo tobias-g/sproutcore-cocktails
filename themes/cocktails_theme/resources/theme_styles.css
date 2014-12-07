@@ -1,3 +1,9 @@
+/* ==========================================================================
+*  Project:   CocktailsTheme Theme Styles
+*  Copyright: @2014 Tobias Gray
+*  ==========================================================================
+*/
+
 $theme.sc-regular-size {
     font-family: 'Roboto-Regular';
     font-size: 14px;
@@ -198,6 +204,10 @@ $theme.body-view {
                         right: 50px;
                     }
                 }
+            }
+
+            .ingredient-group-view {
+                background: white;
             }
 
             .ingredient-group-view:nth-child(even) {

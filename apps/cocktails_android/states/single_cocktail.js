@@ -1,17 +1,17 @@
 // ==========================================================================
-// Project:   CocktailsApp - SingleCocktailState
+// Project:   CocktailsAndroid - SingleCocktailState
 // Copyright: ©2014 Tobias Gray.
 // ==========================================================================
-/*globals CocktailsApp */
+/*globals CocktailsAndroid */
 
 /**
  * State-chart for when entering the single cocktail view
  */
-CocktailsApp.SingleCocktailState = SC.State.design({
+CocktailsAndroid.SingleCocktailState = SC.State.design({
     enterState: function() {
         // set our main application header
         var cocktailName = CocktailsCore.currentCocktailController.get('name'),
-            iconView = CocktailsApp.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
+            iconView = CocktailsAndroid.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
 
         // check the SVG icon is loaded otherwise we need to setup an
         // observer to wait for the SVG to be available to animate
@@ -26,7 +26,7 @@ CocktailsApp.SingleCocktailState = SC.State.design({
         CocktailsCore.primaryHeaderController.set('displayText', cocktailName ? cocktailName : 'Single Cocktail');
 
         // switch out applications main body content
-        CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'singleCocktailView');
+        CocktailsAndroid.mainPage.mainPane.bodyView.set('nowShowing', 'singleCocktailView');
     },
 
     exitState: function() {
@@ -34,11 +34,11 @@ CocktailsApp.SingleCocktailState = SC.State.design({
         this.parentState._prevState = null;
 
         // reset the navigation icon SVG to collapsed by entering the `hiddenMenuState`
-        CocktailsApp.statechart.gotoState('hiddenMenuState');
+        CocktailsAndroid.statechart.gotoState('hiddenMenuState');
 
         // when we exit the state destroy and cleanup any lingering observers
         if(this._svgObserver) {
-            var iconView = CocktailsApp.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
+            var iconView = CocktailsAndroid.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
             iconView.removeObserver('svgIsLoaded', this, '_backHamburgerObserver');
             this._svgObserver = null;
         }
@@ -56,7 +56,7 @@ CocktailsApp.SingleCocktailState = SC.State.design({
      * @private
      */
     _backHamburgerObserver: function() {
-        var iconView = CocktailsApp.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
+        var iconView = CocktailsAndroid.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
 
         if(iconView.get('svgIsLoaded')) {
             iconView.animateTo('back', true);

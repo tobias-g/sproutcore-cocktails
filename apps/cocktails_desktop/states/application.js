@@ -1,8 +1,8 @@
 // ==========================================================================
-// Project:   CocktailsApp - ApplicationRootState
+// Project:   CocktailsDesktop - ApplicationRootState
 // Copyright: ©2014 Tobias Gray.
 // ==========================================================================
-/*globals CocktailsApp */
+/*globals CocktailsDesktop */
 
 sc_require('states/single_cocktail');
 
@@ -12,7 +12,7 @@ sc_require('states/single_cocktail');
  * route and any sub-states manage more granular states for each
  * route.
  */
-CocktailsApp.ApplicationRootState = SC.State.design({
+CocktailsDesktop.ApplicationRootState = SC.State.design({
     initialSubstate: 'showingAllCocktailsState',
 
     /**
@@ -52,7 +52,7 @@ CocktailsApp.ApplicationRootState = SC.State.design({
 
         // set the current cocktail controllers content to the cocktail
         // with the id passed as the context.
-        CocktailsCore.currentCocktailController.set('content', CocktailsApp.store.find(CocktailsCore.Cocktail, context));
+        CocktailsCore.currentCocktailController.set('content', CocktailsDesktop.store.find(CocktailsCore.Cocktail, context));
 
         this.gotoState('showingCocktailState');
     },
@@ -67,7 +67,7 @@ CocktailsApp.ApplicationRootState = SC.State.design({
             CocktailsCore.primaryHeaderController.set('displayText', 'All Cocktails');
 
             // switch out applications main body content
-            CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'allCocktailListView');
+            CocktailsDesktop.mainPage.mainPane.bodyView.set('nowShowing', 'allCocktailListView');
         }
     }),
 
@@ -77,10 +77,10 @@ CocktailsApp.ApplicationRootState = SC.State.design({
             CocktailsCore.primaryHeaderController.set('displayText', 'Personal Cocktails');
 
             // switch out applications main body content
-            CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'personalCocktailListView');
+            CocktailsDesktop.mainPage.mainPane.bodyView.set('nowShowing', 'personalCocktailListView');
 
             if(CocktailsCore.personalCocktailsController.get('needsUpdate')) {
-                var store = CocktailsApp.store;
+                var store = CocktailsDesktop.store;
                 CocktailsCore.personalCocktailsController.refreshContent(store);
             }
         }
@@ -92,7 +92,7 @@ CocktailsApp.ApplicationRootState = SC.State.design({
             CocktailsCore.primaryHeaderController.set('displayText', 'Inventory');
 
             // switch out applications main body content
-            CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'inventoryView');
+            CocktailsDesktop.mainPage.mainPane.bodyView.set('nowShowing', 'inventoryView');
         }
     }),
 
@@ -102,9 +102,9 @@ CocktailsApp.ApplicationRootState = SC.State.design({
             CocktailsCore.primaryHeaderController.set('displayText', 'Help');
 
             // switch out applications main body content
-            CocktailsApp.mainPage.mainPane.bodyView.set('nowShowing', 'helpView');
+            CocktailsDesktop.mainPage.mainPane.bodyView.set('nowShowing', 'helpView');
         }
     }),
 
-    showingCocktailState: SC.State.plugin('CocktailsApp.SingleCocktailState')
+    showingCocktailState: SC.State.plugin('CocktailsDesktop.SingleCocktailState')
 });

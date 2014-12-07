@@ -1,22 +1,22 @@
 // ==========================================================================
-// Project:   CocktailsApp - PrimaryNavMenuState
+// Project:   CocktailsAndroid - PrimaryNavMenuState
 // Copyright: @2014 Tobias Gray.
 // ==========================================================================
-/*globals CocktailsApp */
+/*globals CocktailsAndroid */
 
 /**
  * Primary menu state covers the state of the primary nav menu.
  * The menu has only two states expanded (visible) and hidden.
  * @type SC.State
  */
-CocktailsApp.PrimaryNavMenuState = SC.State.extend({
+CocktailsAndroid.PrimaryNavMenuState = SC.State.extend({
     initialSubstate: 'hiddenMenuState',
 
     hiddenMenuState: SC.State.design({
         enterState: function() {
-            CocktailsApp.mainPage.mainPane.leftNavView.set('isVisible', false);
+            CocktailsAndroid.mainPage.mainPane.leftNavView.set('isVisible', false);
 
-            var iconView = CocktailsApp.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
+            var iconView = CocktailsAndroid.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
 
             // check the SVG icon is loaded otherwise we need to setup an
             // observer to wait for the SVG to be available to animate
@@ -31,7 +31,7 @@ CocktailsApp.PrimaryNavMenuState = SC.State.extend({
         exitState: function() {
             // when we exit the state destroy and cleanup any lingering observers
             if(this._svgObserver) {
-                var iconView = CocktailsApp.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
+                var iconView = CocktailsAndroid.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
                 iconView.removeObserver('svgIsLoaded', this, '_collapseHamburgerObserver');
                 this._svgObserver = null;
             }
@@ -47,7 +47,7 @@ CocktailsApp.PrimaryNavMenuState = SC.State.extend({
          * @private
          */
         _collapseHamburgerObserver: function() {
-            var iconView = CocktailsApp.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
+            var iconView = CocktailsAndroid.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
 
             if(iconView.get('svgIsLoaded')) {
                 iconView.animateTo('collapsed', true);
@@ -59,9 +59,9 @@ CocktailsApp.PrimaryNavMenuState = SC.State.extend({
 
     showingMenuState: SC.State.design({
         enterState: function() {
-            CocktailsApp.mainPage.mainPane.leftNavView.set('isVisible', true);
+            CocktailsAndroid.mainPage.mainPane.leftNavView.set('isVisible', true);
 
-            var iconView = CocktailsApp.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
+            var iconView = CocktailsAndroid.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
 
             // check the SVG icon is loaded otherwise we need to setup an
             // observer to wait for the SVG to be available to animate
@@ -76,7 +76,7 @@ CocktailsApp.PrimaryNavMenuState = SC.State.extend({
         exitState: function() {
             // when we exit the state destroy and cleanup any lingering observers
             if(this._svgObserver) {
-                var iconView = CocktailsApp.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
+                var iconView = CocktailsAndroid.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
                 iconView.removeObserver('svgIsLoaded', this, '_expandHamburgerObserver');
                 this._svgObserver = null;
             }
@@ -92,7 +92,7 @@ CocktailsApp.PrimaryNavMenuState = SC.State.extend({
          * @private
          */
         _expandHamburgerObserver: function() {
-            var iconView = CocktailsApp.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
+            var iconView = CocktailsAndroid.mainPage.mainPane.primaryHeaderView.leftIconView.svgIconView;
 
             if(iconView.get('svgIsLoaded')) {
                 iconView.animateTo('expanded', true);

@@ -1,8 +1,8 @@
 // ==========================================================================
-// Project:   CocktailsApp - ReadyState
+// Project:   CocktailsAndroid - ReadyState
 // Copyright: @2014 Tobias Gray.
 // ==========================================================================
-/*globals CocktailsApp */
+/*globals CocktailsAndroid */
 
 /**
  * Ready state for the cocktails application entered once the application
@@ -10,7 +10,7 @@
  * it and setting up the primary cocktails controllers content.
  * @type SC.State
  */
-CocktailsApp.ReadyRootState = SC.State.extend({
+CocktailsAndroid.ReadyRootState = SC.State.extend({
     initialSubstate: 'loadingState',
 
     loadingState: SC.State.design({
@@ -26,8 +26,8 @@ CocktailsApp.ReadyRootState = SC.State.extend({
                 document.addEventListener("backbutton", function(evt) {
                     // if we're in the single cocktail view go fire the `goBackAction`
                     // otherwise close the application.
-                    if(CocktailsApp.statechart.stateIsCurrentState('showingCocktailState')) {
-                        CocktailsApp.statechart.sendAction('goBackAction')
+                    if(CocktailsAndroid.statechart.stateIsCurrentState('showingCocktailState')) {
+                        CocktailsAndroid.statechart.sendAction('goBackAction')
                     }
                     else {
                         navigator.app.exitApp();
@@ -39,15 +39,15 @@ CocktailsApp.ReadyRootState = SC.State.extend({
             // Instantiate views //
             ///////////////////////
 
-            CocktailsApp.getPath('mainPage.mainPane').append();
+            CocktailsAndroid.getPath('mainPage.mainPane').append();
 
             ///////////////////////////////
             // Populate main controllers //
             ///////////////////////////////
 
             // Query the store
-            var cocktails = CocktailsApp.store.find(CocktailsCore.Cocktail),
-                ingredients = CocktailsApp.store.find(CocktailsCore.Ingredient);
+            var cocktails = CocktailsAndroid.store.find(CocktailsCore.Cocktail),
+                ingredients = CocktailsAndroid.store.find(CocktailsCore.Ingredient);
 
             // Set the content property on the primary controllers.
             CocktailsCore.allCocktailsController.set('content', cocktails);
@@ -58,12 +58,12 @@ CocktailsApp.ReadyRootState = SC.State.extend({
             ////////////////
 
             // check if a local user exists if not create one
-            var users = CocktailsApp.store.find(CocktailsCore.User),
+            var users = CocktailsAndroid.store.find(CocktailsCore.User),
                 user = users.firstObject();
 
             // if there is no local user create one
             if(!user) {
-                user = CocktailsApp.store.createRecord(CocktailsCore.User, {});
+                user = CocktailsAndroid.store.createRecord(CocktailsCore.User, {});
                 user.commitRecord();
             }
 

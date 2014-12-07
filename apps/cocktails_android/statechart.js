@@ -1,15 +1,15 @@
 // ==========================================================================
-// Project:   CocktailsApp - statechart
+// Project:   CocktailsAndroid - statechart
 // Copyright: @2014 Tobias Gray.
 // ==========================================================================
-/*globals CocktailsApp */
+/*globals CocktailsAndroid */
 
 /**
  * Global state-chart for the cocktails application. Documentation and diagrams
  * can be found at http://www.folder6.com/cocktails/statechart.html
  * @type {SC.Statechart}
  */
-CocktailsApp.statechart = SC.Statechart.create({
+CocktailsAndroid.statechart = SC.Statechart.create({
     /**
      * set to YES for helpful console messages when moving
      * between states.
@@ -30,14 +30,14 @@ CocktailsApp.statechart = SC.Statechart.create({
      * controllers content.
      * @type {SC.Statechart}
      */
-    readyRootState: SC.State.plugin('CocktailsApp.ReadyRootState'),
+    readyRootState: SC.State.plugin('CocktailsAndroid.ReadyRootState'),
 
     /**
      * Primary navigation menu can be in two states (visible or hidden).
      * This state-chart manages these states
      * @type {SC.Statechart}
      */
-    primaryNavMenuState: SC.State.plugin('CocktailsApp.PrimaryNavMenuState'),
+    primaryNavMenuState: SC.State.plugin('CocktailsAndroid.PrimaryNavMenuState'),
 
     /**
      * This is the main bulk of the applications state management. It
@@ -48,5 +48,5 @@ CocktailsApp.statechart = SC.Statechart.create({
      * deeper into more granular states.
      * @type {SC.Statechart}
      */
-    applicationState: SC.State.plugin('CocktailsApp.ApplicationRootState')
+    applicationState: SC.State.plugin('CocktailsAndroid.ApplicationRootState')
 });

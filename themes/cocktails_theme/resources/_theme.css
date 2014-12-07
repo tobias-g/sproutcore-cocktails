@@ -2,7 +2,7 @@
     This defines the global $theme variable for use inside the CSS.
     The $theme variable holds the CSS class names for your theme.
 */
-$theme: '.ace.cocktails-app';
+$theme: '.cocktails-theme';
 
 /*
     Theme colours

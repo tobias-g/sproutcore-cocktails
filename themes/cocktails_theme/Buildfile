@@ -1,0 +1,3 @@
+config :cocktails_theme, :css_theme => 'cocktails-theme'
+
+

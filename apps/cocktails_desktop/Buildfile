@@ -1,10 +1,10 @@
 # ==========================================================================
-# Project:   CocktailsApp - buildfile
+# Project:   CocktailsDesktop - buildfile
 # Copyright: @2014 Tobias Gray.
 # ==========================================================================
 
 # required frameworks
-config :cocktails_app, :required => [
+config :cocktails_desktop, :required => [
     :sproutcore,
     :cocktails_core
 ],
@@ -15,4 +15,4 @@ config :cocktails_app, :required => [
 :load_fixtures=> true,
 
 # setup the cocktails application theme
-:css_theme=> 'ace.cocktails-app'
+:theme => 'cocktails_theme'

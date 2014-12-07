@@ -1,8 +1,8 @@
 // ==========================================================================
-// Project:   CocktailsApp - theme
+// Project:   CocktailsDesktop - theme
 // Copyright: @2014 Tobias Gray.
 // ==========================================================================
-/*globals CocktailsApp */
+/*globals CocktailsDesktop */
 
 // This is the theme that defines how your app renders.
 //
@@ -12,13 +12,13 @@
 //
 // You don't have to create the whole theme on your own, though:
 // your app's theme is based on SproutCore's Ace theme.
-CocktailsApp.Theme = SC.AceTheme.create({
-    name: 'cocktails-app'
+CocktailsDesktop.Theme = CocktailsTheme.create({
+    name: 'cocktails-desktop'
 });
 
 // SproutCore needs to know that your app's theme exists
-SC.Theme.addTheme(CocktailsApp.Theme);
+SC.Theme.addTheme(CocktailsDesktop.Theme);
 
 // Setting it as the default theme makes every pane SproutCore
 // creates default to this theme unless otherwise specified.
-SC.defaultTheme = 'cocktails-app';
+SC.defaultTheme = 'cocktails-desktop';

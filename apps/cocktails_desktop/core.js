@@ -1,8 +1,8 @@
 // ==========================================================================
-// Project:   CocktailsApp
+// Project:   CocktailsDesktop
 // Copyright: @2014 Tobias Gray.
 // ==========================================================================
-/*globals CocktailsApp */
+/*globals CocktailsDesktop */
 
 /**
  * The Cocktails App
@@ -12,10 +12,10 @@
  * browse a list of personalized cocktails that can be
  * created with the given inventory.
  */
-CocktailsApp = SC.Application.create(
-    /** @scope CocktailsApp.prototype */ {
+CocktailsDesktop = SC.Application.create(
+    /** @scope CocktailsDesktop.prototype */ {
 
-    NAMESPACE: 'CocktailsApp',
+    NAMESPACE: 'CocktailsDesktop',
     VERSION: '0.1.0',
 
     store: SC.Store.create({

@@ -1,11 +1,11 @@
 // ==========================================================================
-// Project:   CocktailsApp - mainPage
+// Project:   CocktailsAndroid - mainPage
 // Copyright: @2014 Tobias Gray
 // ==========================================================================
-/*globals CocktailsApp, CocktailsCore */
+/*globals CocktailsAndroid, CocktailsCore */
 
 // This page describes the main user interface for the application.
-CocktailsApp.mainPage = SC.Page.design({
+CocktailsAndroid.mainPage = SC.Page.design({
 
     mainPane: SC.MainPane.design({
 

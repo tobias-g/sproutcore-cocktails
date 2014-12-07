@@ -1,14 +1,14 @@
 // ==========================================================================
-// Project:   CocktailsApp - main
+// Project:   CocktailsAndroid - main
 // Copyright: @2014 Tobias Gray.
 // ==========================================================================
-/*globals CocktailsApp */
+/*globals CocktailsAndroid */
 
 /**
  * This function brings the application to life. Once all the js files are
  * ready we setup the applications routes by calling this main function.
  */
-CocktailsApp.main = function main() {
+CocktailsAndroid.main = function main() {
 
     /////////////////////////////
     // Instantiate Controllers //
@@ -36,7 +36,7 @@ CocktailsApp.main = function main() {
     // states. Upon init the statechart will enter its ready_state which will make
     // the mainPane for the application visible followed by setting the content
     // property on the primary controller.
-    var statechart = CocktailsApp.statechart;
+    var statechart = CocktailsAndroid.statechart;
 
     SC.RootResponder.responder.set('defaultResponder', statechart);
 
@@ -44,4 +44,4 @@ CocktailsApp.main = function main() {
 
 };
 
-function main() {CocktailsApp.main();}
+function main() {CocktailsAndroid.main();}
