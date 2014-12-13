@@ -1,0 +1,9 @@
+# ==========================================================================
+# Project:   CocktailsCore - buildfile
+# Copyright: @2014 Tobias Gray.
+# ==========================================================================
+
+# required frameworks
+config :cocktails_core, :required => [
+    :snap_svg
+]

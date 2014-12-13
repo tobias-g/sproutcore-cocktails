@@ -22,6 +22,12 @@ CocktailsDesktop.main = function main() {
 
     CocktailsCore.setupPersonalCocktailsQueryExtention();
 
+    ////////////////////////////////
+    // Setup Cocktials Core Store //
+    ////////////////////////////////
+
+    CocktailsCore.store = CocktailsDesktop.store;
+
     /////////////////////////
     // Register our routes //
     /////////////////////////
@@ -36,12 +42,11 @@ CocktailsDesktop.main = function main() {
     // states. Upon init the statechart will enter its ready_state which will make
     // the mainPane for the application visible followed by setting the content
     // property on the primary controller.
-    var statechart = CocktailsDesktop.statechart;
+    var statechart = CocktailsCore.CoreStatechart.create();
 
     SC.RootResponder.responder.set('defaultResponder', statechart);
 
     statechart.initStatechart();
-
 };
 
 function main() {CocktailsDesktop.main();}
