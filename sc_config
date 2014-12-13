@@ -1,0 +1,10 @@
+var cocktails_project = BT.AppBuilder.create({
+    path: 'apps/cocktails_app',
+    frameworks: ["cocktails_core"]
+});
+
+BT.serverConfig = {
+    host: "localhost",
+    port: 8080,
+    localOnly: true
+};

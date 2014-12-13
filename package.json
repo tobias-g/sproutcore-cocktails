@@ -1,0 +1,26 @@
+{
+  "name": "Cocktails",
+  "version": "0.0.1",
+  "description": "The folder6 cocktails app",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tobias-g/sproutcore-cocktails"
+  },
+  "keywords": [
+    "SproutCore",
+    "Cocktails",
+    "Folder6"
+  ],
+  "author": "Tobias Gray",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/tobias-g/sproutcore-cocktails/issues"
+  },
+  "dependencies": {
+    "build-tools": "git://github.com/sproutcore/build-tools.git"
+  },
+  "homepage": "https://www.folder6.com/cocktails"
+}
