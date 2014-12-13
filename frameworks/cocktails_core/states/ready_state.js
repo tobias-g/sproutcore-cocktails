@@ -17,6 +17,27 @@ CocktailsCore.ReadyRootState = SC.State.extend({
     enterState: function() {
       var store = CocktailsCore.store;
 
+      ///////////////////
+      // Cordova Setup //
+      ///////////////////
+
+      // listener that fired when device is ready. From then on
+      // we can use the cordova API as we please.
+      // TODO: move this to android only statechart
+      document.addEventListener("deviceready", function(evt) {
+        // add listener for the back button being pressed
+        document.addEventListener("backbutton", function(evt) {
+          // if we're in the single cocktail view go fire the `goBackAction`
+          // otherwise close the application.
+          if(CocktailsApp.statechart.stateIsCurrentState('showingCocktailState')) {
+            CocktailsApp.statechart.sendAction('goBackAction')
+          }
+          else {
+            navigator.app.exitApp();
+          }
+        }, false);
+      }, false);
+
       ///////////////////////
       // Instantiate views //
       ///////////////////////

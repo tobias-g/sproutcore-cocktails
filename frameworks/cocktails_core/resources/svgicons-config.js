@@ -6,7 +6,7 @@
  */
 var svgIconConfig = {
     hamburger : {
-        url : sc_static('svg/hamburger.svg'),
+        url : sc_static('resources/hamburger.svg'),
         animation : [
             {
                 el : 'path:nth-child(1)',

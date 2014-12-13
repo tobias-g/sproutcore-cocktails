@@ -6,4 +6,9 @@
 # required frameworks
 config :cocktails_core, :required => [
     :snap_svg
-]
+],
+
+# use fixtures instead of a API. This is as the current cocktails
+# app is designed for mobile and uses fixtures to save bandwidth.
+# For a desktop app the plan is to use the API rather than fixtures.
+:load_fixtures=> true
