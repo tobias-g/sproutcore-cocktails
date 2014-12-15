@@ -29,8 +29,8 @@ CocktailsCore.ReadyRootState = SC.State.extend({
         document.addEventListener("backbutton", function(evt) {
           // if we're in the single cocktail view go fire the `goBackAction`
           // otherwise close the application.
-          if(CocktailsApp.statechart.stateIsCurrentState('showingCocktailState')) {
-            CocktailsApp.statechart.sendAction('goBackAction')
+          if(SC.RootResponder.responder.defaultResponder.stateIsCurrentState('showingCocktailState')) {
+            SC.RootResponder.responder.defaultResponder.sendAction('goBackAction')
           }
           else {
             navigator.app.exitApp();
