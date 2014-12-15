@@ -1,0 +1,19 @@
+# ==========================================================================
+# Project:   CocktailsAndroid - buildfile
+# Copyright: @2014 Tobias Gray.
+# ==========================================================================
+
+# required frameworks
+config :cocktails_android, :required => [
+    :sproutcore,
+    :cocktails_core,
+    :cordova
+],
+
+# use fixtures instead of a API. This is as the current cocktails
+# app is designed for mobile and uses fixtures to save bandwidth.
+# For a desktop app the plan is to use the API rather than fixtures.
+:load_fixtures=> true,
+
+# setup the cocktails application theme
+:theme => 'cocktails_theme'
