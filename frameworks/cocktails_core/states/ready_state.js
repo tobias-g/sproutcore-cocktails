@@ -25,6 +25,7 @@ CocktailsCore.ReadyRootState = SC.State.extend({
       // we can use the cordova API as we please.
       // TODO: move this to android only statechart
       document.addEventListener("deviceready", function(evt) {
+        navigator.splashscreen.hide()
         // add listener for the back button being pressed
         document.addEventListener("backbutton", function(evt) {
           // if we're in the single cocktail view go fire the `goBackAction`
