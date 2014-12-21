@@ -1,6 +1,7 @@
 sc_require('views/common/cocktails_list');
 sc_require('views/cocktails/single_cocktail');
 sc_require('views/inventory/user_inventory_list');
+sc_require('views/help/overview');
 
 CocktailsCore.ApplicationBody = SC.ContainerView.extend({
     layout: {top: 52},
@@ -17,8 +18,8 @@ CocktailsCore.ApplicationBody = SC.ContainerView.extend({
 
     /**
      * A view used to display a list of all the applications
-     * cocktails. TODO: implement a list of all cocktails.
-     * @type {SC.LabelView}
+     * cocktails.
+     * @type {SC.ScrollView}
      */
     allCocktailListView: SC.ScrollView.extend({
 
@@ -36,7 +37,7 @@ CocktailsCore.ApplicationBody = SC.ContainerView.extend({
      * A view to display a list of cocktails the user can make
      * with their specified inventory. TODO: implement a list
      * of personal cocktails.
-     * @type {SC.LabelView}
+     * @type {SC.ScrollView}
      */
     personalCocktailListView: SC.ScrollView.extend({
 
@@ -54,7 +55,7 @@ CocktailsCore.ApplicationBody = SC.ContainerView.extend({
      * A view to display a lits of ingredients that can be
      * checked and un-checked to represent if a user has that
      * ingredient.
-     * @type {SC.LabelView}
+     * @type {SC.ScrollView}
      */
     inventoryView: SC.ScrollView.extend({
 
@@ -73,18 +74,22 @@ CocktailsCore.ApplicationBody = SC.ContainerView.extend({
      * such as pointers on how to search and add ingredients to
      * their inventory, Lookup all cocktails or personal cocktails
      * or simply a place to leave release notes.
-     * @type {SC.LabelView}
+     * @type {SC.ScrollView}
      */
-    helpView: SC.LabelView.design({
+    helpView: SC.ScrollView.extend({
+
         classNames: ['help-view'],
-        value: 'Help'
+
+        layout: { bottom: 0, left: 0, right: 0, top: 0},
+
+        contentView: CocktailsCore.HelpOverviewView,
     }),
 
     /**
      * A view for displaying the details of a single cocktail
      * selected either from the all cocktails list or personal
      * cocktails list.
-     * @type {SC.LabelView}
+     * @type {CocktailsCore.CocktailsSingleCocktailView}
      */
     singleCocktailView: CocktailsCore.CocktailsSingleCocktailView
 })
