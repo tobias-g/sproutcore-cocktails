@@ -175,7 +175,14 @@ $theme.body-view {
     }
 
     .help-view {
-        padding: 10px;
+        .help-content {
+            padding: 10px;
+
+            h2 {
+                font-size: 18px;
+                margin: 10px 0px;
+            }
+        }
     }
 
     .single-cocktail-view {
