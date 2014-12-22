@@ -45,9 +45,44 @@ CocktailsCore.ApplicationBody = SC.ContainerView.extend({
 
         layout: { bottom: 0, left: 0, right: 0, top: 0},
 
-        contentView: CocktailsCore.CommonCocktailsListView.design({
-            // bind the list views content to the content of our all cocktails controller
-            contentBinding: SC.Binding.oneWay('CocktailsCore.personalCocktailsController')
+        contentView: SC.ContainerView.create({
+            nowShowingBinding: SC.Binding.transform(function (value, binding) {
+                return value > 0 ? 'cocktailsListView' : 'noCocktailsView'
+            }).from("CocktailsCore.personalCocktailsController.length"),
+
+            cocktailsListView: CocktailsCore.CommonCocktailsListView.extend({
+                // bind the list views content to the content of our all cocktails controller
+                contentBinding: SC.Binding.oneWay('CocktailsCore.personalCocktailsController')
+            }),
+
+            noCocktailsView: SC.View.extend({
+                layout: {top: 10, left: 10, right: 10},
+
+                childViews: ['messageView', 'inventoryButtonView'],
+
+                messageView: SC.View.design({
+                    render: function(context, firstTime) {
+                        if(firstTime) {
+                            context.begin('h2')
+                                .push('Oh Noes, No Cocktails!')
+                            .end();
+
+                            context.begin('p')
+                                .push('Looks like you don\'t have enough ingredients to make any cocktails. ')
+                                .push('Head over to the inventory and try selecting a few more.')
+                            .end();
+                        }
+                    }
+                }),
+
+                inventoryButtonView: SC.ButtonView.design({
+                    layout: {height: 30, width: 150, centerX: 0, centerY: 0},
+                    title: 'Go to inventory &raquo;',
+                    action: function() {
+                        SC.routes.set('location', 'inventory');
+                    }
+                })
+            })
         })
     }),
 
