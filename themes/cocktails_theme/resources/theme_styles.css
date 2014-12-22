@@ -10,6 +10,24 @@ $theme.sc-regular-size {
     color: $text-dark;
 }
 
+$theme h2 {
+    font-size: 18px;
+    margin: 10px 0px;
+}
+
+$theme.sc-button-view {
+    border: $secondary-brand solid 1px;
+    background: $primary-brand;
+    color: $text-light;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    label {
+        line-height: 30px;
+    }
+}
+
 $theme.primary-header-view {
     background: $primary-brand;
 
@@ -177,11 +195,6 @@ $theme.body-view {
     .help-view {
         .help-content {
             padding: 10px;
-
-            h2 {
-                font-size: 18px;
-                margin: 10px 0px;
-            }
         }
     }
 
