@@ -16,6 +16,9 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
 
     layout: { bottom: 0, left: 0, right: 0, top: 0},
 
+    horizontalOverlay: true,
+    verticalOverlay: true,
+
     /**
      * The contents of our scroll view. In this case our
      * views for showing a single cocktail.
@@ -25,6 +28,58 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
         classNames: ['single-cocktail-view'],
 
         childViews: ['cocktailImageView', 'ingredientsView', 'descriptionView'],
+
+        /**
+         * Bind a property to the number of ingredients required for
+         * the cocktail. We use this to determine the height of our
+         * view.
+         */
+        ingredientsCountBinding: SC.Binding.oneWay('CocktailsCore.currentCocktailIngredientsController.length'),
+
+        /**
+         * Create a binding to track the description views layout.
+         * We use this for determining the height of our scroll views
+         * content view.
+         */
+        descriptionLayoutBinding: SC.Binding.oneWay('.descriptionView.layout'),
+
+        /**
+         * Here we setup an observer of the current design mode. Within
+         * it we adjust the content views height so all the cocktail
+         * views contents can be scrolled to.
+         */
+        designModeDidChange: function () {
+            var designMode = this.get('designMode'),
+                ingredientsCount = this.get('ingredientsCount') || 0,
+                descriptionLayout = this.get('descriptionLayout') || {},
+                rowHeight = this.getPath('ingredientsView.listView.rowHeight') || 0,
+                descriptionHeight = descriptionLayout.height || 0,
+                height = 0;
+
+            if (designMode) {
+                console.log(designMode, ingredientsCount, descriptionLayout);
+
+                // small devices and medium portrait mode stack all the views
+                // so set the content views height to the total of all the views
+                // height.
+                if(designMode === "s_p" || designMode === "s_l" || designMode === "m_p") {
+                    height += 300 // image view
+                                + (ingredientsCount * rowHeight)
+                                + descriptionHeight;
+                }
+                // otherwise we need to use the larger of the image view + ingredient
+                // list view or description views height.
+                else {
+                    var ingredientsAndImageHeight = 300 + 20 + (ingredientsCount * rowHeight);
+
+                    height = Math.max(descriptionHeight, ingredientsAndImageHeight);
+                }
+
+                console.log(height);
+
+                this.adjust('height', height);
+            }
+        }.observes('designMode', 'ingredientsCount', 'descriptionLayout'),
 
         /**
          * A feature graphic for the cocktail being viewed. If
@@ -92,7 +147,7 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
              *
              * @type {String}
              */
-            itemsBinding: 'CocktailsCore.currentCocktailIngredientsController.length',
+            itemsBinding: SC.Binding.oneWay('CocktailsCore.currentCocktailIngredientsController.length'),
 
             /**
              * Update the views height accordingly to accommodate the
@@ -112,7 +167,7 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
 
             childViews: ['listView'],
 
-            listView: SC.ListView.design({
+            listView: SC.ListView.design(SC.ContentDisplay, {
                 /**
                  * The `CocktailsCore.currentCocktailIngredientsController` is a
                  * 2 dimensional array of ingredients and substitute ingredients
@@ -121,14 +176,6 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
                 contentBinding: 'CocktailsCore.currentCocktailIngredientsController',
 
                 classNames: ['cocktail-ingredient-list'],
-
-                /**
-                 * TODO: modeAdjust screws up without pre-setting the
-                 * layout right property beforehand. Need to figure
-                 * out why this is.
-                 * @type {Object}
-                 */
-                //layout: { right: 0 },
 
                 /**
                  * Set the height for our rows
@@ -141,7 +188,7 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
                  * alternative ingredient substitutes
                  * @type {CocktailsCore.CommonCarouselView}
                  */
-                exampleView: CocktailsCore.CommonCarouselView.design(SC.ContentDisplay, {
+                exampleView: CocktailsCore.CommonCarouselView.design({
                     classNames: ['ingredient-group-view', 'ingredient-group-carousel'],
 
                     /**
@@ -191,7 +238,7 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
             itemsBinding: 'CocktailsCore.currentCocktailIngredientsController.length',
 
             /**
-             * We dont use `modeAdjust` hash here as the layout is dependent
+             * We don't use `modeAdjust` hash here as the layout is dependent
              * on the `designMode` and `items` (number of ingredients). Therefore
              * we manually adjust out layout properties when either change.
              */
