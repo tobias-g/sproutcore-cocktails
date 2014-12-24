@@ -57,8 +57,6 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
                 height = 0;
 
             if (designMode) {
-                console.log(designMode, ingredientsCount, descriptionLayout);
-
                 // small devices and medium portrait mode stack all the views
                 // so set the content views height to the total of all the views
                 // height.
@@ -74,8 +72,6 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
 
                     height = Math.max(descriptionHeight, ingredientsAndImageHeight);
                 }
-
-                console.log(height);
 
                 this.adjust('height', height);
             }
@@ -109,7 +105,7 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
                 l_p: { layout: { right: 10,     width: 400,     top: 10 } }     // 1080 x 1920
             },
 
-            value: sc_static('resources/images/cocktail1.jpg'),// TODO: get image from cocktail record
+            valueBinding: 'CocktailsCore.currentCocktailController.staticImage',
 
             scale: SC.BEST_FILL
         }),

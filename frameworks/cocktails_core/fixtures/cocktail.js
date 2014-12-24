@@ -3,6 +3,7 @@ sc_require('models/cocktail');
 CocktailsCore.Cocktail.FIXTURES = [
     {
         "id": 1,
+        "feature_image": "dry-martini.jpg",
         "name": "Dry Martini",
         "description": "Stir vermouth and gin over ice cubes in mixing glass. Strain into " +
         "cocktail glass. Serve with a twist of lemon peel or olive, if desired.",
@@ -13,6 +14,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 2,
+        "feature_image": "manhattan.jpg",
         "name": "Manhattan",
         "description": "Stir with ice and strain into cocktail glass. Serve with a cherry.",
         "memberships": [
@@ -22,6 +24,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 3,
+        "feature_image": "martinez.jpg",
         "name": "Martinez Cocktail",
         "description": "Stir with ice and strain into cocktail glass. Serve with a cherry.",
         "memberships": [
@@ -33,6 +36,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 4,
+        "feature_image": "old-fashioned.jpg",
         "name": "Old-Fashioned",
         "description": "In old-fashioned glass, put sugar cube, bitters, and water and muddle " +
         "well. Add whiskey, stir. Add a twist of lemon peel and ice cubes. Decorate with slices " +
@@ -46,6 +50,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 5,
+        "feature_image": "brandy-cocktail.jpg",
         "name": "Brandy Cocktail",
         "description": "Stir ingredients with ice and strain into cocktail glass. Add a twist of lemon peel.",
         "memberships": [
@@ -56,6 +61,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 6,
+        "feature_image": "margarita.jpg",
         "name": "Margarita",
         "description": "Rub rim of cocktail glass with rind of a lemon or lime, dip rim in salt. Shake " +
         "ingredients with ice and strain into salt-rimmed glass.",
@@ -68,6 +74,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 7,
+        "feature_image": "daiquiri.jpg",
         "name": "Daiquiri",
         "description": "Shake with ice and strain into cocktail glass.",
         "memberships": [
@@ -78,6 +85,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 8,
+        "feature_image": "mint-julep.jpg",
         "name": "Mint Julep",
         "description": "In silver julep cup, silver mug, or collins glass, muddle mint leaves, powdered " +
         "sugar and water. Fill glass or mug with shaved or crushed ice and add bourbon. Top with more ice " +
@@ -91,6 +99,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 9,
+        "feature_image": "sidecar-cocktail.jpg",
         "name": "Sidecar Cocktail",
         "description": "Shake with ice and strain into cocktail glass.",
         "memberships": [
@@ -101,6 +110,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 10,
+        "feature_image": "french-75.jpg",
         "name": "French \"75\"",
         "description": "Stir in collins glass. Then add ice cubes, fill with champagne and stir. Decorate " +
         "with a slice of lemon or orange and cherry. Serve with straws.",
@@ -113,6 +123,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 11,
+        "feature_image": "bloody-mary.jpg",
         "name": "Bloody Mary",
         "description": "Shake with ice and strain into old-fashioned glass over ice cubes. A wedge of lime may " +
         "be added.",
@@ -127,6 +138,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 12,
+        "feature_image": "irish-coffee.jpg",
         "name": "Irish Coffee",
         "description": "Into Irish coffee glass rimmed with sugar, pour Irish whiskey. Fill to within half an inch " +
         "of top with coffee. Cover surface to brim with whipped cream.",
@@ -137,6 +149,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 13,
+        "feature_image": "jack-rose-cocktail.jpg",
         "name": "Jack Rose Cocktail",
         "description": "Shake with ice and strain into cocktail glass.",
         "memberships": [
@@ -147,6 +160,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 14,
+        "feature_image": "negroni.jpg",
         "name": "Negroni",
         "description": "Stir with ice and strain into cocktail glass, or into old-fashioned glass over ice cubes, " +
         "with or without a splash of club soda. Add a twist of lemon peel.",
@@ -160,6 +174,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 15,
+        "feature_image": "whiskey-sour.jpg",
         "name": "Whiskey Sour",
         "description": "Shake with ice and strain into sour glass. Decorate with half a slice of lemon and a cherry.",
         "memberships": [
@@ -170,6 +185,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 16,
+        "feature_image": "mai-tai.jpg",
         "name": "Mai-Tai",
         "description": "Shake with ice and strain into large old-fashioned glass about 1/3 full with crushed ice. " +
         "Decorate with a maraschino cherry speared to a wedge of fresh pineapple. For a hair raiser, top with a " +
@@ -186,6 +202,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 17,
+        "feature_image": "planters-punch-1.jpg",
         "name": "Planters Punch No. 1",
         "description": "Mix first three ingredients in collins glass, add ice cubes, and stir until glass is frosted. " +
         "Add bitters and rum. Stir and top with grenadine. Decorate with slices of lemon, orange, and pineapple, and " +
@@ -201,6 +218,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 18,
+        "feature_image": "planters-punch-2.jpg",
         "name": "Planters Punch No. 2",
         "description": "Pour first five ingredients into collins glass filled with ice. Stir until glass is frosted. " +
         "Add Jamaican Rum, stir, and top with triple sec and grenadine. Decorate with slices of orange, lemon, and " +
@@ -218,6 +236,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 19,
+        "feature_image": "cosmopolitan.jpg",
         "name": "Cosmopolitan Cocktail",
         "description": "In a cocktail glass shaker, combine all ingredients. Shake well and strain into a Martini glass. " +
         "Garnish with a lime wedge.",
@@ -231,6 +250,7 @@ CocktailsCore.Cocktail.FIXTURES = [
     },
     {
         "id": 20,
+        "feature_image": "tom-collins.jpg",
         "name": "Tom Collins",
         "description": "Shake with ice and strain into collins glass. Add several ice cubes, fill with club soda, and " +
         "stir. Decorate with slices of lemon and orange and a cherry. Serve with straw.",
