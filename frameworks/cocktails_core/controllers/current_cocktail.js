@@ -10,5 +10,20 @@ CocktailsCore.CurrentCocktailController = SC.ObjectController.extend({
      * otherwise null.
      * @type {CocktailsCore.Cocktail}
      */
-    content: null
+    content: null,
+
+    staticRef: sc_static('images/cocktails/default.jpg'),
+
+    staticImage: function () {
+        var featureImage = this.get('featureImage'),
+            staticRef = this.get('staticRef'),
+            url = null;
+
+        if (featureImage) {
+            var lastSlash = staticRef.lastIndexOf("/"),
+                url = staticRef.substring(0, lastSlash) + '/' + featureImage;
+        }
+
+        return url;
+    }.property('content').cacheable(),
 });

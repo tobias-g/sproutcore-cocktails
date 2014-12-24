@@ -35,6 +35,19 @@ CocktailsCore.Cocktail = SC.Record.extend({
     }),
 
     /**
+     * Relative link to the cocktails feature image (the main
+     * image). This image will be displayed above the ingredients
+     * though more images can be displayed in-line with the
+     * description if desired. If no image is available simply
+     * default to a stock image.
+     * @type {String}
+     */
+    featureImage: SC.Record.attr(String, {
+        key: 'feature_image',
+        defaultValue: 'default.jpg'
+    }),
+
+    /**
      * Memberships are the link between ingredients and cocktails
      * that also describe the ingredient amount required and
      * what substitutes could be used for an ingredient.
