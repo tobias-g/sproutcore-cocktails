@@ -38,6 +38,8 @@ CocktailsCore.ToolbarPrimaryHeader = SC.View.extend({
 
         childViews: ['svgIconView'],
 
+        action: null,
+
         ////////////////////
         // Desktop Events //
         ////////////////////
@@ -57,7 +59,9 @@ CocktailsCore.ToolbarPrimaryHeader = SC.View.extend({
 
             action = inSingleCocktialState ? 'goBackAction' : menuAction ;
 
-            this.fireAction(action);
+            this.set('action', action);
+
+            this.fireAction();
             return YES;
         },
 
