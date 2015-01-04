@@ -68,6 +68,20 @@ CocktailsCore.ApplicationRootState = SC.State.design({
 
       // switch out applications main body content
       CocktailsCore.mainPage.mainPane.bodyView.set('nowShowing', 'allCocktailListView');
+
+      // if our `CocktailsCore.cocktailsListScrollOffset` is not 0
+      // scroll to the offset and reset it back to 0.
+      var offset = CocktailsCore.get('cocktailsListScrollOffset');
+
+      if(offset !== 0) {
+        // move to our offset and reset the stored offset
+        // to 0. Note we also need to use invokeLast to
+        // allow our nowShowing view to be updated.
+        this.invokeLast(function() {
+          CocktailsCore.mainPage.mainPane.bodyView.contentView.scrollTo(0,offset);
+          CocktailsCore.set('cocktailsListScrollOffset', 0);
+        });
+      }
     }
   }),
 
@@ -82,6 +96,20 @@ CocktailsCore.ApplicationRootState = SC.State.design({
       if(CocktailsCore.personalCocktailsController.get('needsUpdate')) {
         var store = CocktailsCore.store;
         CocktailsCore.personalCocktailsController.refreshContent(store);
+      }
+
+      // if our `CocktailsCore.cocktailsListScrollOffset` is not 0
+      // scroll to the offset and reset it back to 0.
+      var offset = CocktailsCore.get('cocktailsListScrollOffset');
+
+      if(offset !== 0) {
+        // move to our offset and reset the stored offset
+        // to 0. Note we also need to use invokeLast to
+        // allow our nowShowing view to be updated.
+        this.invokeLast(function() {
+          CocktailsCore.mainPage.mainPane.bodyView.contentView.contentView.scrollTo(0,offset);
+          CocktailsCore.set('cocktailsListScrollOffset', 0);
+        });
       }
     }
   }),

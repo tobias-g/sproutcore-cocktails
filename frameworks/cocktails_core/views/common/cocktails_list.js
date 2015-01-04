@@ -53,15 +53,20 @@ CocktailsCore.CommonCocktailsListView = SC.ListView.extend({
         },
 
         mouseUp: function(evt) {
-            // remember id we want to navigate to and
-            // define what should happen after our event
-            // feedback
-            var id = this.getPath('content.id'),
+            // remember the scroll offset for the list, the
+            // id we want to navigate to and define what
+            // should happen after our event feedback.
+            var scrollContentView = this.getPath('parentView.parentView.parentView'),
+                id = this.getPath('content.id'),
                 callback = function() {
                     // When animation is done route to required cocktail. We need
                     // to do this in a new runloop as the callback gets ran outside
                     // the main runloop.
                     SC.run(function(){
+                        // remember where we are in the list
+                        CocktailsCore.set('cocktailsListScrollOffset', scrollContentView.get('verticalScrollOffset'));
+
+                        // go to our single cocktail
                         SC.routes.set('location', 'cocktail/' + id);
                     });
                 };

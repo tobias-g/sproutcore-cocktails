@@ -18,6 +18,20 @@ CocktailsCore = SC.Object.create(
     VERSION: '0.1.0',
 
     /**
+     * Scroll offset used when navigating between a
+     * cocktail list view (all cocktails and personal
+     * cocktails) and the single cocktail view then
+     * back.
+     *
+     * This allows us to go back and return to the same
+     * position in the list we left to view a single
+     * cocktail and come back.
+     *
+     * @type {Number}
+     */
+    cocktailsListScrollOffset: 0,
+
+    /**
      * Utility method to setup the `SATISFIED_BY` custom query used
      * when querying for personal cocktails
      */
