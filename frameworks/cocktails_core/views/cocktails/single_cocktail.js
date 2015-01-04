@@ -27,7 +27,7 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
     contentView: SC.View.design({
         classNames: ['single-cocktail-view'],
 
-        childViews: ['cocktailImageView', 'ingredientsView', 'descriptionView'],
+        childViews: ['cocktailImageView', 'featureImageLoadingLabel', 'ingredientsView', 'descriptionView'],
 
         /**
          * Bind a property to the number of ingredients required for
@@ -84,6 +84,8 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
          */
         cocktailImageView: SC.ImageView.design({
 
+            classNames: ['cocktail-feature-image'],
+
             /**
              * Set default properties that may change depending on
              * designMode
@@ -108,6 +110,70 @@ CocktailsCore.CocktailsSingleCocktailView = SC.ScrollView.extend({
             valueBinding: 'CocktailsCore.currentCocktailController.staticImage',
 
             scale: SC.BEST_FILL
+        }),
+
+        /**
+         * A label view to display a message describing the loading
+         * state of the cocktails feature image. Note the layout and
+         * modeAdjust are identical to the cocktailImageView.
+         * @type {SC.LabelView}
+         */
+        featureImageLoadingLabel: SC.LabelView.design({
+            classNames: ['feature-image-loading-label'],
+
+            /**
+             * Set default properties that may change depending on
+             * designMode
+             * @type {Object}
+             */
+            layout: {right: 0, height: 300, top: 0},
+
+            /**
+             * Tablets in landscape view and large screen devices
+             * have different layout properties
+             * @type {Object}
+             */
+            modeAdjust: {
+                s_p: { layout: { right: 0,      height: 300,    top: 0  } },    // 320 x 568
+                s_l: { layout: { right: 0,      height: 300,    top: 0  } },    // 568 x 320
+                m_l: { layout: { right: 10,     width: 400,     top: 10 } },    // 1024 x 768
+                m_p: { layout: { right: 0,      height: 300,    top: 0  } },    // 768 x 1024
+                l_l: { layout: { right: 10,     width: 400,     top: 10 } },    // 1920 x 1080
+                l_p: { layout: { right: 10,     width: 400,     top: 10 } }     // 1080 x 1920
+            },
+
+            // default binding to loading state
+            imageStatus: SC.IMAGE_STATE_LOADING,
+
+            // bind imageState to the status of the feature image view
+            imageStatusBinding: SC.Binding.oneWay('.parentView.cocktailImageView.status'),
+
+            /**
+             * Message to display in place of the image if it is
+             * loading or has failed to load.
+             *
+             * @return {String} Message to display describing the images status
+             */
+            value: function () {
+                var imageStatus = this.get('imageStatus'),
+                 hasLoadingError = (imageStatus === SC.IMAGE_STATE_FAILED || imageStatus === SC.IMAGE_STATE_NONE);
+
+                // if error occurred
+                if (hasLoadingError) {
+                    return 'Error Loading Image!';
+                }
+                // otherwise assume image is still loading
+                return 'Loading Image.';
+            }.property('imageStatus').cacheable(),
+
+            /**
+             * If the image has loaded we no longer need to display
+             * the label view. This binding checks the image status
+             * and set the visibility of the message accordingly.
+             */
+            isVisibleBinding: SC.Binding.transform(function (value, binding) {
+                return value === SC.IMAGE_STATE_LOADED ? false : true ;
+            }).from(".imageStatus")
         }),
 
         /**
