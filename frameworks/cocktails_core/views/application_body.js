@@ -37,51 +37,51 @@ CocktailsCore.ApplicationBody = SC.ContainerView.extend({
      * A view to display a list of cocktails the user can make
      * with their specified inventory. TODO: implement a list
      * of personal cocktails.
-     * @type {SC.ScrollView}
+     * @type {SC.ContainerView}
      */
-    personalCocktailListView: SC.ScrollView.extend({
+    personalCocktailListView: SC.ContainerView.extend({
 
-        classNames: ['personal-cocktails-view'],
+        nowShowingBinding: SC.Binding.transform(function (value, binding) {
+            return value > 0 ? 'cocktailsListView' : 'noCocktailsView'
+        }).from("CocktailsCore.personalCocktailsController.length"),
 
-        layout: { bottom: 0, left: 0, right: 0, top: 0},
+        cocktailsListView: SC.ScrollView.design({
+            classNames: ['personal-cocktails-view'],
 
-        contentView: SC.ContainerView.create({
-            nowShowingBinding: SC.Binding.transform(function (value, binding) {
-                return value > 0 ? 'cocktailsListView' : 'noCocktailsView'
-            }).from("CocktailsCore.personalCocktailsController.length"),
+            layout: { bottom: 0, left: 0, right: 0, top: 0},
 
-            cocktailsListView: CocktailsCore.CommonCocktailsListView.extend({
+            contentView: CocktailsCore.CommonCocktailsListView.extend({
                 // bind the list views content to the content of our all cocktails controller
                 contentBinding: SC.Binding.oneWay('CocktailsCore.personalCocktailsController')
+            })
+        }),
+
+        noCocktailsView: SC.View.extend({
+            layout: {top: 10, left: 10, right: 10},
+
+            childViews: ['messageView', 'inventoryButtonView'],
+
+            messageView: SC.View.design({
+                render: function(context, firstTime) {
+                    if(firstTime) {
+                        context.begin('h2')
+                            .push('Oh Noes, No Cocktails!')
+                        .end();
+
+                        context.begin('p')
+                            .push('Looks like you don\'t have enough ingredients to make any cocktails. ')
+                            .push('Head over to the inventory and try selecting a few more.')
+                        .end();
+                    }
+                }
             }),
 
-            noCocktailsView: SC.View.extend({
-                layout: {top: 10, left: 10, right: 10},
-
-                childViews: ['messageView', 'inventoryButtonView'],
-
-                messageView: SC.View.design({
-                    render: function(context, firstTime) {
-                        if(firstTime) {
-                            context.begin('h2')
-                                .push('Oh Noes, No Cocktails!')
-                            .end();
-
-                            context.begin('p')
-                                .push('Looks like you don\'t have enough ingredients to make any cocktails. ')
-                                .push('Head over to the inventory and try selecting a few more.')
-                            .end();
-                        }
-                    }
-                }),
-
-                inventoryButtonView: SC.ButtonView.design({
-                    layout: {height: 30, width: 150, centerX: 0, centerY: 0},
-                    title: 'Go to inventory &raquo;',
-                    action: function() {
-                        SC.routes.set('location', 'inventory');
-                    }
-                })
+            inventoryButtonView: SC.ButtonView.design({
+                layout: {height: 30, width: 150, centerX: 0, centerY: 0},
+                title: 'Go to inventory &raquo;',
+                action: function() {
+                    SC.routes.set('location', 'inventory');
+                }
             })
         })
     }),
