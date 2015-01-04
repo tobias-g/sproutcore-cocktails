@@ -51,7 +51,7 @@ CocktailsCore.ApplicationBody = SC.ContainerView.extend({
             layout: { bottom: 0, left: 0, right: 0, top: 0},
 
             contentView: CocktailsCore.CommonCocktailsListView.extend({
-                // bind the list views content to the content of our all cocktails controller
+                // bind the list views content to the content of our personal cocktails controller
                 contentBinding: SC.Binding.oneWay('CocktailsCore.personalCocktailsController')
             })
         }),
