@@ -199,6 +199,15 @@ $theme.body-view {
     }
 
     .single-cocktail-view {
+        .cocktail-feature-image {
+            background: #fff;
+        }
+
+        .feature-image-loading-label {
+            text-align: center;
+            line-height: 300px;
+        }
+
         .cocktail-ingredient-list {
             .ingredient-group-view {
                 .carousel-nav-button {
